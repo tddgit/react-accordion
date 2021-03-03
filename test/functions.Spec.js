@@ -1,5 +1,33 @@
 const functions = require('../src/functions');
 
+// beforeEach(() => initDatabase());
+// afterEach(() => closeDatabase());
+//
+// beforeAll(() => initDatabase());
+// afterAll(() => closeDatabase());
+
+nameCheck = () => console.log('Checking Name...');
+
+describe('Checking Names', () => {
+    beforeEach(() => nameCheck());
+
+    test('User is Jeff', () => {
+        const user = 'Jeff';
+        expect(user).toBe('Jeff');
+    });
+    test('User is Karen', () => {
+        const user = 'Karen';
+        expect(user).toBe('Karen');
+    });
+});
+
+const initDatabase = () => {
+    console.log('Database initialization...');
+};
+
+const closeDatabase = () => {
+    console.log('Database clozed...');
+};
 test('Ads 2 + 2 to equal 4', () => {
     expect(functions.add(2, 2)).toBe(4);
 });
