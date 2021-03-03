@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/src/utils.js" />
+  </component>
+  <component name="StyledComponentsInjections">
+    <option name="prefixes">
+      <array>
+        <option value="" />
+      </array>
+    </option>
+  </component>
+  <component name="accountSettings">
+    <option name="activeRegion" value="us-east-1" />
+    <option name="recentlyUsedRegions">
+      <list>
+        <option value="us-east-1" />
+      </list>
+    </option>
+  </component>
+</project>
