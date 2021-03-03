@@ -6,6 +6,7 @@
     </profile>
   </component>
   <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/js-testing-introduction" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/react-ecosystem-a-z" vcs="Git" />
   </component>
