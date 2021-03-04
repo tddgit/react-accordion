@@ -6,7 +6,8 @@ function formatStr(str) {
     return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
 }
 
-// Some comment
+// Some comment dfadfa
+
 isAnagram('afadfasdfa', 'fadfadsfadf'); // ?
 isAnagram('cinema', 'iceman'); // ?
 

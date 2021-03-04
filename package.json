@@ -6,14 +6,30 @@
         "prettier-watch": "npx onchange \"**/*\" -- npx prettier --write --ignore-unknown {{changed}}",
         "prettier": "prettier --write --plugin-nsearch-dir=. ./**",
         "nodemon": "nodemon",
-        "test": "jest --watchAll",
+        "test": "jest",
+        "jest:watchAll": "jest --watchAll",
         "start": "webpack ./src/app.js --mode development --watch",
         "build-css": "tailwindcss build tailwindcss-tutorial/src/styles.css -o tailwindcss-tutorial/public/styles.css",
         "build": "webpack",
         "serve": "webpack serve",
         "lint": "eslint ./src",
         "lint:fix": "./node_modules/.bin/eslint --ignore-path .gitignore --fix-dry-run --color",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "husky:add:pre-commit": "npx husky add .husky/pre-commit \"lint-staged\""
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged",
+            "pre-push": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "./src/*.{js,jsx,ts,tsx,svelte,vue}": [
+            "npm test",
+            "npx prettier --write",
+            "./node_modules/.bin/eslint --ignore-path .gitignore --fix-dry-run --color",
+            "git add"
+        ]
     },
     "devDependencies": {
         "@babel/cli": "^7.13.0",
@@ -64,19 +80,6 @@
         "last 2 versions",
         "not ie <= 8"
     ],
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged",
-            "pre-push": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "./src/*.{js,jsx,ts,tsx,svelte,vue}": [
-            "npx prettier --write",
-            "./node_modules/.bin/eslint --ignore-path .gitignore --fix-dry-run --color",
-            "git add"
-        ]
-    },
     "dependencies": {
         "axios": "^0.21.1",
         "ejs": "^3.1.6",
