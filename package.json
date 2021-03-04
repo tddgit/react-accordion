@@ -15,7 +15,8 @@
         "lint": "eslint ./src",
         "lint:fix": "./node_modules/.bin/eslint --ignore-path .gitignore --fix-dry-run --color",
         "prepare": "husky install",
-        "husky:add:pre-commit": "npx husky add .husky/pre-commit \"lint-staged\""
+        "husky:add:pre-commit": "npx husky add .husky/pre-commit \"lint-staged\"",
+        "precommit": "lint-staged"
     },
     "husky": {
         "hooks": {
