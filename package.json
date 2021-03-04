@@ -12,7 +12,7 @@
         "build": "webpack",
         "serve": "webpack serve",
         "lint": "eslint ./src",
-        "lint:fix": "eslint ./src --fix --color"
+        "lint:fix": "./node_modules/.bin/eslint --ignore-path .gitignore --fix --color"
     },
     "devDependencies": {
         "@babel/cli": "^7.13.0",
@@ -70,11 +70,11 @@
     },
     "lint-staged": {
         ".js*": [
-            "npm run lint:fix",
+            "./node_modules/.bin/eslint --ignore-path .gitignore --fix --color",
             "git add"
         ],
         ".ts*": [
-            "npm run lint:fix",
+            "./node_modules/.bin/eslint --ignore-path .gitignore --fix --color",
             "git add"
         ]
     },
