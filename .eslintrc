@@ -12,7 +12,9 @@
     "eslint:recommended",
     //    "react-app",
     //    "plugin:prettier/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:json/recommended",
+    "plugin:css-modules/recommended"
   ],
   //  "parser": "@typescript-eslint/parser",
   "parser": "babel-eslint",
@@ -38,15 +40,15 @@
       "error",
       "unix"
     ],
-    quotes: [
+    "quotes": [
       "error",
       "single"
     ],
-    semi: [
+    "semi": [
       "error",
       "always"
     ],
-    'no-cond-assign': [
+    "no-cond-assign": [
       "error",
       "always"
     ]
@@ -57,7 +59,9 @@
     "public/"
   ],
   "plugins": [
-    "react"
+    "react",
+    "html",
+    "css-modules"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -66,7 +70,22 @@
   "settings": {
     "react": {
       "version": "detect"
-    }
+    },
+    "html/html-extensions": [
+      ".html",
+      ".we"
+    ],
+    "html/xml-extensions": [
+      ".html"
+    ],
+    "html/report-bad-indent": "error",
+    "html/javascript-mime-types": "/^text\\/(javascript|jsx)$/",
+    //    "html/indent": "0",
+    //    // code should start at the beginning of the line (no initial indentation).
+    //    "html/indent": "+4",
+    //    // indentation is the <script> indentation plus two spaces.
+    "html/indent": "tab"
+    // indentation is one tab at the beginning of the line.
   },
   "overrides": [
     {
