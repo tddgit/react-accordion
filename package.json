@@ -1,88 +1,118 @@
 {
-    "name": "svelte-app",
-    "version": "1.0.0",
-    "main": "src/app.js",
-    "scripts": {
-        "prettier-watch": "npx onchange \"**/*\" -- npx prettier --write --ignore-unknown {{changed}}",
-        "prettier": "prettier --write --plugin-nsearch-dir=. ./**",
-        "nodemon": "nodemon",
-        "test": "jest",
-        "jest:watchAll": "jest --watchAll",
-        "start": "webpack ./src/app.js --mode development --watch",
-        "build-css": "tailwindcss build tailwindcss-tutorial/src/styles.css -o tailwindcss-tutorial/public/styles.css",
-        "build": "webpack",
-        "serve": "webpack serve",
-        "lint": "eslint ./src",
-        "lint:fix": "./node_modules/.bin/eslint --ignore-path .gitignore --fix-dry-run --color",
-        "prepare": "husky install",
-        "husky:add:pre-commit": "npx husky add .husky/pre-commit \"lint-staged\"",
-        "precommit": "lint-staged"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged",
-            "pre-push": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "./src/*.{js,jsx,ts,tsx,svelte,vue}": [
-            "npm test",
-            "npx prettier --write",
-            "./node_modules/.bin/eslint --ignore-path .gitignore --fix-dry-run --color"
-        ]
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.13.0",
-        "@babel/core": "^7.13.8",
-        "@babel/preset-env": "^7.13.9",
-        "@typescript-eslint/eslint-plugin": "^4.16.1",
-        "@typescript-eslint/parser": "^4.16.1",
-        "babel": "^6.23.0",
-        "babel-core": "^6.26.3",
-        "babel-eslint": "^10.1.0",
-        "babel-jest": "^26.6.3",
-        "babel-loader": "^8.2.2",
-        "babel-preset-env": "^1.7.0",
-        "css-loader": "^5.1.1",
-        "eslint-config-airbnb-base": "^14.2.1",
-        "eslint-config-airbnb-typescript": "^12.3.1",
-        "eslint-config-prettier": "^8.1.0",
-        "eslint-plugin-html": "^6.1.1",
-        "eslint-plugin-import": "^2.22.1",
-        "eslint-plugin-jest": "^24.1.5",
-        "eslint-plugin-jsx-a11y": "^6.4.1",
-        "eslint-plugin-prettier": "^3.3.1",
-        "husky": "^5.1.3",
-        "jasmine": "^3.6.4",
-        "jest": "^26.6.3",
-        "jsdoc": "^3.6.6",
-        "lint-staged": "^10.5.4",
-        "parcel": "^1.12.4",
-        "puppeteer": "^8.0.0",
-        "rollup": "^2.40.0",
-        "rollup-plugin-babel": "^4.4.0",
-        "sirv-cli": "^1.0.0",
-        "snowpack": "^3.0.13",
-        "style-loader": "^2.0.0",
-        "ts-loader": "^8.0.17",
-        "typescript": "^4.2.2",
-        "webpack": "^5.24.2",
-        "webpack-bundle-analyzer": "^4.4.0",
-        "webpack-cli": "^4.5.0",
-        "webpack-dev-server": "^3.11.2"
-    },
-    "engines": {
-        "node": ">= 6.0.0",
-        "npm": ">= 3.0.0"
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not ie <= 8"
-    ],
-    "dependencies": {
-        "axios": "^0.21.1",
-        "ejs": "^3.1.6",
-        "tailwindcss": "^2.0.3"
+  "name": "app",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "scripts": {
+    "prettier-watch": "npx onchange \"**/*\" -- npx prettier --write --ignore-unknown {{changed}}",
+    "prettier": "npx prettier --write",
+    "prettier:plugins": "prettier --write --plugin-search-dir=. ./**",
+    "stylelint": "npx stylelint",
+    "nodemon": "nodemon",
+    "test": "jest --passWithNoTests",
+    "jest:watchAll": "jest --watchAll",
+    "start": "webpack ./src/app.js --mode development --watch",
+    "build-css": "tailwindcss build tailwindcss-tutorial/src/styles.css -o tailwindcss-tutorial/public/styles.css",
+    "build": "webpack",
+    "serve": "webpack serve",
+    "lint": "eslint --fix-dry-run --color",
+    "prepare": "husky install",
+    "husky:pre-commit": "npx husky add .husky/pre-commit \"lint-staged\"",
+    "husky:pre-push": "npx husky add .husky/pre-push \"lint-staged\"",
+    "husky:post-commit": "npx husky add .husky/post-commit \"git update-index --again\"",
+    "precommit": "lint-staged",
+    "prepush": "lint-staged",
+    "postcommit": "git update-index --again",
+    "validate-onetime:svelte": "svelte-check",
+    "validate-watch:svelte": "svelte-check --watch",
+    "build:svelte": "rollup -c",
+    "dev:svelte": "PORT=6060 rollup -c -w --host"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "lint-staged",
+      "post-commit": "git update-index --again"
     }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,vue,svelte,css,scss,html,json}": [
+      "npm test",
+      "npm run prettier",
+      "npm run lint"
+    ],
+    "*.css": [
+      "npm run stylelint"
+    ],
+    "*.scss": [
+      "postcss --config path/to/your/config --replace",
+      "npm run stylelint"
+    ],
+    "*.{png,jpeg,jpg,gif,svg}": [
+      "imagemin-lint-staged"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^5.1.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-html": "^6.1.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.5",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^5.1.3",
+    "imagemin-lint-staged": "^0.4.0",
+    "jasmine": "^3.6.4",
+    "jest": "^26.6.3",
+    "jsdoc": "^3.6.6",
+    "lint-staged": "^10.5.4",
+    "postcss": "^8.2.7",
+    "prettier": "^2.2.1",
+    "prettier-plugin-sh": "^0.6.0",
+    "puppeteer": "^8.0.0",
+    "rollup": "^2.40.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "sirv-cli": "^1.0.0",
+    "snowpack": "^3.0.13",
+    "style-loader": "^2.0.0",
+    "stylelint": "^13.11.0",
+    "stylelint-config-css-modules": "^2.2.0",
+    "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "ts-loader": "^8.0.17",
+    "tslib": "^1.14.1",
+    "typescript": "^4.2.2",
+    "webpack": "^5.24.2",
+    "webpack-bundle-analyzer": "^4.4.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "dependencies": {
+    "@prettier/plugin-pug": "^1.13.5",
+    "axios": "^0.21.1",
+    "ejs": "^3.1.6",
+    "tailwindcss": "^2.0.3"
+  }
 }

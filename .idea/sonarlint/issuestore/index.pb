@@ -16,8 +16,6 @@ src/app.js,7/e/7e2883689d806a5f689579600efd29e430bebf92
 B
 src/hello-world.js,c/2/c258ead4353d48efb6ee5b20cf639eb58dcdb186
 <
-.eslintrc.js,d/b/dbc0c31823b8f2e4ed04a397722fed33a67f123f
-<
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
 ;
 src/util.js,3/7/3705be42d294bc4dabd48e32cb44899d6479b180
@@ -43,14 +41,6 @@ H
 test/hello-world.spec.js,e/f/efb9788442d0019d27bcd085f302303622841be9
 B
 test/utils.spec.js,b/1/b1e2ade8b43719709ba7e6d7500f5fb6af404fd5
-I
-spec/support/jasmine.json,c/4/c44f0bb647f03dff1767d3069f457e031b4a37c4
-N
-lib/jasmine_examples/Player.js,1/e/1e13caaa13733c6848bfcb1ddd4f9ad48e271420
-[
-+spec/helpers/jasmine_examples/SpecHelper.js,1/3/13c92832b03db0dd2fcce665489fb6dc109185f1
-S
-#spec/jasmine_examples/PlayerSpec.js,2/5/25555a13f4634b030c6f8fcca3a8812bc151fe98
 H
 test/hello-world.Spec.js,7/f/7f9629d35608432f1c603224fa724dc290be4fb3
 B
@@ -65,10 +55,6 @@ A
 src/anagrams.js,e/a/ea963a801379cbe7ab8910268671256936c6c88c
 D
 test/anagram.Spec.js,7/b/7b02bc886745c960b717699c6dea7d704c84e216
-M
-classsed-jest/babel.config.js,3/6/36285528cd9aece5993b66ccb36ba88040d60826
-J
-classsed-jest/package.json,b/7/b722c6dfbab462e97df1ca829f71377a3492b92b
 D
 src/js/validators.js,f/f/ffd72999448d74ec8e00274d96681c22157a7034
 F
@@ -83,21 +69,71 @@ J
 src/emmetsandbox/abbr.html,4/d/4d1bb3e0399caf9dd3e24158f4b9cd7cc431cff5
 I
 src/emmetsandbox/abbr.css,1/b/1b871ce1fca74870ee8639d2d0645b598bcaab1d
-O
-classsed-jest/webpack.config.js,2/6/2615865158311f9635aaf085c12561b5231db2c9
-H
-src/ninjafood/index.html,5/3/535109fd8234fdaf17f996def9c6cfa59eceb69a
 D
 src/styles/index.css,7/a/7a1236ac068ce98163901ea7ee08ea9af61a024a
-S
-#tailwindcss-tutorial/src/styles.css,a/f/afcbf410c96b734738eb4cc6e4522e0c5c0e67ba
 D
 src/reverseString.js,2/b/2b3e6960870088aa1109dd16af7c35e4968c9e39
-V
-&tailwindcss-tutorial/public/styles.css,b/c/bc97e19791506efaf4e494ded8cc8334d60b9367
-V
-&tailwindcss-tutorial/public/index.html,6/b/6bbc9b8a58c1ead37a4c5a5f0478e5e300bd2ea4
 <
 src/index.ts,c/5/c5fb850250c7443c48a6c12b5cf6916773da31f1
 A
 webpack.config.js,d/5/d5595158cc48f9bf3e51b06f6e6805a8fd2d6262
+T
+$_GITHUB/regex-playlist/validation.js,a/c/aca0213e06193a470509a5e95c800926e1efe53f
+Q
+!_GITHUB/regex-playlist/index.html,4/7/473b9ae55a18b74dfd8e835a3ee38775c50de118
+Q
+!_GITHUB/regex-playlist/styles.css,d/8/d800c51b5325367cc7f90fe7353ddbb0c7cd7080
+Q
+!_GITHUB/webpack-starters/.babelrc,2/1/21fb91c6bbe45aca4567ad8eec6281829e19c056
+X
+(_GITHUB/webpack-starters/dist/index.html,4/f/4f142b83da8b48c52a6d905f3812cd3ef7845554
+Z
+*_GITHUB/webpack-starters/src/getClasses.js,9/4/9492e05e324d9bdb3a73881fd52309114c3374e4
+S
+#_GITHUB/webpack-starters/.gitignore,7/5/754c5c03fb17308dad31d305f77a688baa1ff56f
+Y
+)_GITHUB/webpack-starters/dist/main.js.map,a/1/a1cc3bb510172fe9633fb22702c5de1f59c545af
+V
+&_GITHUB/webpack-starters/src/wizard.js,6/2/628e8f2bdb6c85760bed5627a84382a3ce395663
+U
+%_GITHUB/webpack-starters/dist/main.js,0/f/0fe4ec47f8a7b421c4d65d790a5abd518206b5aa
+U
+%_GITHUB/webpack-starters/package.json,f/1/f19684cfc31f47b3c48d7d78f43cfb933f137224
+Y
+)_GITHUB/webpack-starters/src/barbarian.js,8/9/898506e9a2b87dfa0115fa57ca6afe1ee12204df
+U
+%_GITHUB/webpack-starters/src/index.js,4/c/4c4811fec0cfa188abb48876883ff4b700fa1e79
+Z
+*_GITHUB/webpack-starters/webpack.config.js,0/4/04c5fa61a64c2efb12664d7188a16bf1c2794200
+`
+0_GITHUB/webpack-starters-typescript/src/index.ts,2/9/29715a75a7deee04b0df75c68ba42f73bdd0e6ea
+P
+ _GITHUB/classsed-jest/.gitignore,9/a/9a6e487f7ce3a90e7a2b4db315146c8bdc577cd8
+P
+ _GITHUB/classsed-jest/index.html,6/8/680201b8c7119ffba979a6f958fea69b0b6c8a62
+R
+"_GITHUB/classsed-jest/package.json,4/d/4d6fe028abec3c26d04fa0033d52e30e4e582ffd
+U
+%_GITHUB/classsed-jest/babel.config.js,9/c/9cabf6b51ba8dc6ab54e7a70b5540555bd2e6a0a
+W
+'_GITHUB/classsed-jest/package-lock.json,8/a/8a7c781f33c8aec461cc1966ea410b4a9d2a202e
+W
+'_GITHUB/classsed-jest/webpack.config.js,3/a/3a3066934299bb1c0d7c3c652825a95adeb44c9c
+\
+,_GITHUB/html-and-css-crash-course/index.html,1/a/1a931de223761c9dd09ba68396394c23ef29c305
+[
++_GITHUB/tailwindcss-tutorial/src/styles.css,0/6/06427f56697bc9f94baf41c2560fc549086c00c8
+^
+._GITHUB/tailwindcss-tutorial/public/index.html,e/d/ed065752ca1c992df86aa6340ea3e86fc9fdd2ce
+^
+._GITHUB/tailwindcss-tutorial/public/styles.css,1/c/1cd932dedb60f84035d8fa2be2a8baf1bf15217d
+B
+.lintstagedrc.json,0/a/0af001b2e60216c0a4fc3e3c579aa411718a0237
+9
+	.dcignore,7/7/7791000a9a93019a87d67e0b676c86447ba29c67
+9
+	.eslintrc,4/b/4be5f5e3cea171c304090be92469b2f2cb51039a
+=
+.eslintignore,8/8/88939cd7e826eac4f61dd9adac091b9d64277287
+E
+package.template.json,c/9/c95a37655f94c77305bda7640fe4d3c76f06628a
