@@ -12,7 +12,7 @@
         "build": "webpack",
         "serve": "webpack serve",
         "lint": "eslint ./src",
-        "lint:fix": "./node_modules/.bin/eslint --ignore-path .gitignore --fix --color"
+        "lint:fix": "./node_modules/.bin/eslint --ignore-path .gitignore --fix-dry-run --color"
     },
     "devDependencies": {
         "@babel/cli": "^7.13.0",
