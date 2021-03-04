@@ -9,9 +9,7 @@ test('"cinema" is anagrma "iceman"', () => {
 });
 
 test('"Dormitory" is anagrma "dirty room###"', () => {
-    expect(
-        isAnagram('Dormitory', 'dirty room###')
-    ).toBeTruthy();
+    expect(isAnagram('Dormitory', 'dirty room###')).toBeTruthy();
 });
 
 test('"Hello" is NOT anagram "Aloha"', () => {

@@ -1,7 +1,4 @@
-const generateText = (name, age) => {
-    // Returns output text
-    return `${name} (${age} years old)`;
-};
+const generateText = (name, age) => `${name} (${age} years old)`; // Returns output text
 
 const createElement = (type, text, className) => {
     // Creates a new HTML element and returns it
@@ -19,17 +16,14 @@ const validateInput = (text, notEmpty, isNumber) => {
     if (notEmpty && text.trim().length === 0) {
         return false;
     }
-    if (isNumber && +text === NaN) {
+    if (isNumber && text.isNaN) {
         return false;
     }
     return true;
 };
 
 const checkAndGenerate = (name, age) => {
-    if (
-        !validateInput(name, true, false) ||
-        !validateInput(age, false, true)
-    ) {
+    if (!validateInput(name, true, false) || !validateInput(age, false, true)) {
         return false;
     }
     return generateText(name, age);

@@ -1,0 +1,278 @@
+{
+  "root": true,
+  "env": {
+    "commonjs": true,
+    "node": true,
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended",
+    //    "react-app",
+    //    "plugin:prettier/recommended",
+    "plugin:react/recommended"
+  ],
+  //  "parser": "@typescript-eslint/parser",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-undef": 2,
+    "no-unused-vars": 2,
+    "no-useless-escape": 0,
+    "no-console": 0,
+    "no-use-before-define": 0,
+    "no-param-reassign": 0,
+    "indent": [
+      "error",
+      4
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    quotes: [
+      "error",
+      "single"
+    ],
+    semi: [
+      "error",
+      "always"
+    ],
+    'no-cond-assign': [
+      "error",
+      "always"
+    ]
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "public/"
+  ],
+  "plugins": [
+    "react"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.ts",
+        "**/*.tsx"
+      ],
+      "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "airbnb-typescript",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+      },
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+      },
+      "plugins": [
+        "react",
+        "@typescript-eslint"
+      ],
+      "rules": {
+        "indent": [
+          "error",
+          4,
+          {
+            "SwitchCase": 1
+          }
+        ],
+        "linebreak-style": [
+          "error",
+          "unix"
+        ],
+        "quotes": [
+          "error",
+          "single"
+        ],
+        "comma-dangle": [
+          "error",
+          "always-multiline"
+        ],
+        "@typescript-eslint/no-explicit-any": 0,
+        "no-undef": 2,
+        "no-unused-vars": 2,
+        "no-useless-escape": 0,
+        "no-console": 0,
+        "no-use-before-define": 0,
+        "no-param-reassign": 0
+      },
+      "settings": {
+        "react": {
+          "version": "detect"
+        }
+      }
+    }
+    //    {
+    //      "files": [
+    //        "*.vue"
+    //      ],
+    //      "processor": "svelte3/svelte3",
+    //      "parser": "@typescript-eslint/parser",
+    //      // add the TypeScript parser
+    //      "plugins": [
+    //        "svelte3",
+    //        "@typescript-eslint"
+    //        // add the TypeScript plugin
+    //      ],
+    //      "parserOptions": {
+    //        // add these parser options
+    //        "tsconfigRootDir": "__dirname",
+    //        "project": "./tsconfig.json",
+    //        "sourceType": "module",
+    //        "extraFileExtensions": [
+    //          ".vue"
+    //        ],
+    //        "createDefaultProgram": true
+    //      },
+    //      "extends": [
+    //        // then, enable whichever type-aware rules you want to use
+    //        "plugin:vue/essential",
+    //        // this is a default sub-set of rules for your .vue files
+    //        "@vue/airbnb",
+    //        // plug airbnb rules but made for .vue files
+    //        "@vue/typescript"
+    //        // default typescript related rules
+    //      ],
+    //      "rules": {
+    //        "indent": [
+    //          "error",
+    //          4
+    //        ],
+    //        "linebreak-style": [
+    //          "error",
+    //          "unix"
+    //        ],
+    //        quotes: [
+    //          "error",
+    //          "single"
+    //        ],
+    //        semi: [
+    //          "error",
+    //          "always"
+    //        ],
+    //        'no-undef': 2,
+    //        'no-cond-assign': [
+    //          "error",
+    //          "always"
+    //        ],
+    //        "no-console": "off"
+    //      }
+    //    },
+
+
+    //    {
+    //      "files": [
+    //        "*.svelte"
+    //      ],
+    //      "processor": "svelte3/svelte3",
+    //      "parser": "@typescript-eslint/parser",
+    //      // add the TypeScript parser
+    //      "plugins": [
+    //        "svelte3",
+    //        "@typescript-eslint"
+    //        // add the TypeScript plugin
+    //      ],
+    //      "settings": {
+    //        "svelte3/typescript": "require('typescript')"
+    //        // pass the TypeScript package to the Sve lte plugin
+    //        // ...
+    //      },
+    //      "parserOptions": {
+    //        // add these parser options
+    //        "tsconfigRootDir": "__dirname",
+    //        "project": "./tsconfig.json",
+    //        "sourceType": "module",
+    //        "extraFileExtensions": [
+    //          ".svelte"
+    //        ],
+    //        "createDefaultProgram": true
+    //      },
+    //      "extends": [
+    //        // then, enable whichever type-aware rules you want to use
+    //        "eslint:recommended",
+    //        "airbnb-typescript",
+    //        "plugin:@typescript-eslint/recommended",
+    //        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    //      ],
+    //      "rules": {
+    //        "@typesctipt-eslint/indent": [
+    //          'error',
+    //          4
+    //        ],
+    //        "linebreak-style": [
+    //          'error',
+    //          'unix'
+    //        ],
+    //        quotes: [
+    //          'error',
+    //          'single'
+    //        ],
+    //        semi: [
+    //          'error',
+    //          'always'
+    //        ],
+    //        'no-undef': 1,
+    //        // override default options for rules from base configurations
+    //        // 'comma-dangle': ['error', 'always'],npm install --global @vue/cli
+    //        'no-cond-assign': [
+    //          'error',
+    //          'always'
+    //        ],
+    //        // disable rules from base configurations
+    //        'no-console': 'off'
+    //      }
+    //    }
+  ]
+}
+
+//  [
+//    // then, enable whichever type-aware rules you want to use
+//    //        "eslint:recommended",
+////    "airbnb-typescript"
+//    //    "plugin:@typescript-eslint/recommended",
+//    //    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+//  ],
+// parser: '@typescript-eslint/parser', // add the TypeScript parser
+// plugins: ['@typescript-eslint'], // add the TypeScript plugin
+// parserOptions: {
+//     // add these parser options
+//     tsconfigRootDir: __dirname,
+//     project: './tsconfig.json',
+//     sourceType: 'module',
+//     createDefaultProgram: true,
+// },

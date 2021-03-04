@@ -5,9 +5,7 @@ test('reverseString function exists', () => {
 });
 
 test('String reverses', () => {
-    expect(reverseString('dfsdfafadfadfadf')).toEqual(
-        'fdafdafdafafdsfd'
-    );
+    expect(reverseString('dfsdfafadfadfadf')).toEqual('fdafdafdafafdsfd');
 });
 
 test('String reverses', () => {
