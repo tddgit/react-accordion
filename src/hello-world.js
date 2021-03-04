@@ -3,5 +3,4 @@ function helloworld() {
     return 'hello world';
 }
 
-//somthing dfadfad
 module.exports = helloworld;
