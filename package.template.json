@@ -8,7 +8,8 @@
         "prettier:plugins": "prettier --write --plugin-search-dir=. ./**",
         "stylelint": "npx stylelint",
         "nodemon": "nodemon",
-        "test": "jest --passWithNoTests",
+        "test": "jest --bail --findRelatedTests",
+        "test:cross-env": "cross-env BROWSERSLIST_DISABLE_CACHE=true BROWSERSLIST='IE 8' jest --bail --findRelatedTests",
         "jest:watchAll": "jest --watchAll",
         "start": "webpack ./src/app.js --mode development --watch",
         "build-css": "tailwindcss build tailwindcss-tutorial/src/styles.css -o tailwindcss-tutorial/public/styles.css",
@@ -40,16 +41,12 @@
             "npm run prettier",
             "npm run lint"
         ],
-        "*.css": [
-            "npm run stylelint"
-        ],
+        "*.css": ["npm run stylelint"],
         "*.scss": [
             "postcss --config path/to/your/config --replace",
             "npm run stylelint"
         ],
-        "*.{png,jpeg,jpg,gif,svg}": [
-            "imagemin-lint-staged"
-        ]
+        "*.{png,jpeg,jpg,gif,svg}": ["imagemin-lint-staged"]
     },
     "devDependencies": {
         "@babel/cli": "^7.13.0",
@@ -104,11 +101,7 @@
         "node": ">= 6.0.0",
         "npm": ">= 3.0.0"
     },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not ie <= 8"
-    ],
+    "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
     "dependencies": {
         "@prettier/plugin-pug": "^1.13.5",
         "axios": "^0.21.1",

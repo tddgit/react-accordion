@@ -1,9 +1,63 @@
 {
   "extends": [
     "stylelint-config-standard",
-    "stylelint-config-css-modules"
+    "stylelint-config-css-modules",
+    "extends",
+    "stylelint-config-sass-guidelines",
+    "stylelint-prettier/recommended",
+    "stylelint-no-unsupported-browser-features",
+    "stylelint-a11y",
+    "stylelint-scss"
   ],
   "rules": {
-    "indentation": 4
-  }
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "scss/dollar-variable-pattern": "^foo",
+    "scss/selector-no-redundant-nesting-selector": true,
+    "indentation": 4,
+    "number-leading-zero": null,
+    "order/order": [
+      "custom-properties",
+      "declarations"
+    ],
+    "prettier/prettier": [
+      true,
+      {
+        "singleQuote": true,
+        "tabWidth": 4
+      }
+    ],
+    "plugin/selector-bem-pattern": {
+      "componentName": "[A-Z]+",
+      "componentSelectors": {
+        "initial": "^\\.{componentName}(?:-[a-z]+)?$",
+        "combined": "^\\.combined-{componentName}-[a-z]+$"
+      },
+      "utilitySelectors": "^\\.util-[a-z]+$"
+    },
+    "plugin/no-unsupported-browser-features": [
+      true,
+      {
+        "browsers": [
+          "> 1%",
+          "Last 2 versions"
+        ],
+        "ignore": [
+          "rem"
+        ],
+        "ignorePartialSupport": true
+      }
+    ],
+    "order/properties-order": [
+      "width",
+      "height"
+    ],
+    "a11y/media-prefers-reduced-motion": true,
+    "a11y/no-outline-none": true,
+    "a11y/selector-pseudo-class-focus": true
+  },
+  "plugins": [
+    "stylelint-order",
+    "stylelint-selector-bem-pattern"
+  ]
 }
