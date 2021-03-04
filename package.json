@@ -26,9 +26,9 @@
     },
     "lint-staged": {
         "./src/*.{js,jsx,ts,tsx,svelte,vue}": [
+            "npm test",
             "npx prettier --write",
-            "./node_modules/.bin/eslint --ignore-path .gitignore --fix-dry-run --color",
-            "git add"
+            "./node_modules/.bin/eslint --ignore-path .gitignore --fix-dry-run --color"
         ]
     },
     "devDependencies": {
