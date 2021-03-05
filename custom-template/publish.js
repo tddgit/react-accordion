@@ -44,7 +44,7 @@ function hashToLink(doclet, hash) {
     url = helper.createLink(doclet);
     url = url.replace(/(#.+|$)/, hash);
 
-    return `<a href="${url}">${hash}</a>`;
+    return `<a href='${url}'>${hash}</a>`;
 }
 
 function needsSignature({ kind, type, meta }) {
@@ -190,15 +190,15 @@ function addSignatureReturns(f) {
         );
     }
 
-    f.signature = `<span class="signature">${
+    f.signature = `<span class='signature'>${
         f.signature || ''
-    }</span><span class="type-signature">${returnTypesString}</span>`;
+    }</span><span class='type-signature'>${returnTypesString}</span>`;
 }
 
 function addSignatureTypes(f) {
     const types = f.type ? buildItemTypeStrings(f) : [];
 
-    f.signature = `${f.signature || ''}<span class="type-signature">${
+    f.signature = `${f.signature || ''}<span class='type-signature'>${
         types.length ? ` :${types.join('|')}` : ''
     }</span>`;
 }
@@ -393,7 +393,7 @@ function linktoExternal(longName, name) {
  */
 function buildNav(members) {
     let globalNav;
-    let nav = '<h2><a href="index.html">JSDoc Example</a></h2>';
+    let nav = '<h2><a href="program-tutorial.html">JSDoc Example</a></h2>';
     const seen = {};
     const seenTutorials = {};
 
@@ -433,9 +433,9 @@ function buildNav(members) {
 }
 
 /**
-    @param {TAFFY} taffyData See <http://taffydb.com/>.
-    @param {object} opts
-    @param {Tutorial} tutorials
+ @param {TAFFY} taffyData See <http://taffydb.com/>.
+ @param {object} opts
+ @param {Tutorial} tutorials
  */
 exports.publish = (taffyData, opts, tutorials) => {
     let classes;

@@ -1,48 +1,37 @@
 // @ts-check
 /**
- * Student Name
- * @type {string}
+ * Calculator module - See {@tutorial calculator-tutorial}
+ * @module calculator
  */
 
-const studentName = 'John Doe';
+/**
+ * Add two numbers
+ * @param {number} n1 - First number
+ * @param {number} n2 - Second number
+ * @returns {number} - Sum of n1 and n2
+ */
+exports.add = (n1, n2) => n1 + n2;
 
 /**
- * Array of grades
- * @type {Array<number|boolean>}
+ * Multiply two numbers
+ * @param {number} n1 - First number
+ * @param {number} n2 - Second number
+ * @returns {number} - Product of n1 and n2
  */
-const grades = [98, 97.7, 76, 89, true];
+exports.multiply = (n1, n2) => n1 * n2;
 
 /**
- *
- * @type {{id: number|string, text: string}}
+ * Subtract two numbers
+ * @param {number} n1 - First number
+ * @param {number} n2 - Second number
+ * @returns {number} - Difference of n1 and n2
  */
-const todo = {
-    id: 1,
-    text: 'Hello',
-    test: 1,
-};
-/**
- * Calculate tax
- * @param amount - Total amount
- * @param tax - Tax percentage
- * @returns {string}  - Total with a dollar sign
- */
-const calculateTax = (amount, tax) => `$${amount} + ${tax * amount}`;
+exports.subtract = (n1, n2) => n1 - n2;
 
 /**
- * A Student
- * @typedef {Object} Student
- * @property {number} id - Student ID
- * @property {string} name - Student name
- * @property {string|number} [age] - Student age (optional)
- * @property {boolean} isActive - Student status
- * */
-
-/**
- * @type {Student}
+ * Divide two numbers
+ * @param {number} n1 - First number
+ * @param {number} n2 - Second number
+ * @returns {number} - Quotient of n1 and n2
  */
-const student = {
-    id: 1,
-    name: 'John Doe',
-    age: 20,
-};
+exports.divide = (n1, n2) => n1 / n2;
