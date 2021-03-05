@@ -1,15 +1,22 @@
-import * as $ from 'jquery';
+interface Analitics {
+    destroy(): void;
 
-function createAnalytics() {
+    getClicks(): string | number;
+}
+
+function createAnalytics(): Analitics {
     let counter = 0;
     let destroyed = false;
 
-    const listener = () => counter++;
+    const listener = () => {
+        counter += 1;
+        return counter;
+    };
 
     document.addEventListener('click', listener);
     return {
         destroy() {
-            $(document).off('click', listener);
+            document.removeEventListener('click', listener);
             destroyed = true;
         },
         getClicks() {
@@ -21,4 +28,5 @@ function createAnalytics() {
     };
 }
 
-window.analytics = createAnalytics();
+// @ts-ignore
+window['analytics'] = createAnalytics();

@@ -37,6 +37,11 @@ module.exports = {
         sourceType: 'module',
     },
     rules: {
+        indent: 'off',
+        '@typescript-eslint/indent': ['off'],
+        '@typescript-eslint/dot-notation': ['off'],
+        '@typescript-eslint/ban-ts-comment': ['off'],
+
         'no-undef': 2,
         'no-plusplus': 0,
         camelcase: 0,
@@ -44,7 +49,7 @@ module.exports = {
         'import/no-extraneous-dependencies': [
             'error',
             {
-                optionalDependencies: ['test/unit/index.js'],
+                optionalDependencies: ['test/unit/index.jsx'],
             },
         ],
         // 'import/no-extraneous-dependencies':   0,
@@ -91,7 +96,7 @@ module.exports = {
                 functions: false,
             },
         ],
-        indent: ['error', 4],
+
         'linebreak-style': ['error', 'unix'],
         quotes: ['off', 'single'],
         semi: ['error', 'always'],
@@ -211,13 +216,10 @@ module.exports = {
             },
             plugins: ['react', '@typescript-eslint'],
             rules: {
-                indent: [
-                    'error',
-                    4,
-                    {
-                        SwitchCase: 1,
-                    },
-                ],
+                indent: 'off',
+                '@typescript-eslint/indent': ['off'],
+                '@typescript-eslint/dot-notation': ['off'],
+                '@typescript-eslint/ban-ts-comment': ['off'],
                 'linebreak-style': ['error', 'unix'],
                 quotes: ['error', 'single'],
                 'comma-dangle': ['error', 'always-multiline'],

@@ -54,8 +54,8 @@ module.exports = {
     optimization: optimization(),
     mode: 'development',
     entry: {
-        main: './index.js',
-        analytics: './analytics.js',
+        main: ['@babel/polyfill', './index.jsx'],
+        analytics: './analytics.ts',
     },
     output: {
         filename: filename('js'),
@@ -94,6 +94,11 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
+                use: ['babel-loader'],
+            },
+            {
+                test: /\.jsx$/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
             },
