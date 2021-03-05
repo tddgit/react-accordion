@@ -10,7 +10,6 @@
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": null,
     "color-named": null,
-    "scss/dollar-variable-pattern": "^foo",
     "scss/selector-no-redundant-nesting-selector": true,
     "indentation": 4,
     "number-leading-zero": null,

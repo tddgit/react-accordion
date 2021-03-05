@@ -7,6 +7,7 @@ import json from './assets/json.json';
 import './styles/styles.css';
 import csv from './assets/sample2.csv';
 import './styles/less.less';
+import './styles/scss.scss';
 
 const post = new Post('Webpack Post Title', Webpacklogo);
 

@@ -80,7 +80,7 @@ module.exports = {
             filename: filename('css'),
         }),
         new ESLintPlugin(),
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
         new HtmlWebpackPlugin({
             title: 'Webpack Stas',
             template: './index.html',
@@ -92,6 +92,11 @@ module.exports = {
     ],
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: ['babel-loader'],
+            },
             {
                 test: /\.(ts|tsx)$/,
                 use: 'ts-loader',
@@ -107,15 +112,25 @@ module.exports = {
                 include: [path.resolve(__dirname, 'src')],
             },
             {
-                test: /\.(sa|sc|c)ss$/,
+                test: /\.s[ac]ss$/i,
                 use: [
                     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'style-loader',
                     'css-loader',
-                    'postcss-loader',
                     'sass-loader',
                 ],
                 include: [path.resolve(__dirname, 'src')],
             },
+            {
+                test: /\.css$/i,
+                use: [
+                    // Creates `style` nodes from JS strings
+                    'style-loader',
+                    // Translates CSS into CommonJS
+                    'css-loader',
+                ],
+            },
+
             {
                 test: /\.(ttf|woff|woff2|eot)$/,
                 use: ['file-loader'],
@@ -140,9 +155,9 @@ module.exports = {
                 test: /\.s[ac]ss$/i,
                 use: [
                     // Creates `style` nodes from JS strings
-                    'style-loader',
-                    // Translates CSS into CommonJS
-                    'css-loader',
+                    // 'style-loader',
+                    // // Translates CSS into CommonJS
+                    // 'css-loader',
                     // Compiles Sass to CSS
                     'sass-loader',
                 ],

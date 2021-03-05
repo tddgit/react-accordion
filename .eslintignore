@@ -1,5 +1,6 @@
 *.css
 *.scss
+*.less
 **/docs/
 **/dist/
 **/custom-template
