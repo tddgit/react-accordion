@@ -47,7 +47,7 @@ module.exports = {
                 optionalDependencies: ['test/unit/index.js'],
             },
         ],
-        // 'import/no-extraneous-dependencies': 0,
+        // 'import/no-extraneous-dependencies':   0,
         'no-unused-expressions': ['error', { allowTernary: true }],
         'comma-dangle': 0,
         'no-unused-vars': 0,
