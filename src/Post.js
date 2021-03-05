@@ -12,4 +12,4 @@ class Post {
     }
 }
 
-exports.default = Post;
+// exports.defalut = { Post };
