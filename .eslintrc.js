@@ -50,6 +50,7 @@ module.exports = {
         // 'import/no-extraneous-dependencies':   0,
         'no-unused-expressions': ['error', { allowTernary: true }],
         'comma-dangle': 0,
+        'object-curly-newline': 0,
         'no-unused-vars': 0,
         'no-useless-escape': 0,
         'guard-for-in': 1,
