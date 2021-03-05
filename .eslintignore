@@ -1,2 +1,5 @@
 *.css
 *.scss
+**/docs/
+**/dist/
+**/custom-template
