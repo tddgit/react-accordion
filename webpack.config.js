@@ -11,6 +11,8 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 const devMode = process.env.NODE_ENV !== 'production';
 
+const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
+
 const optimization = () => {
     const config = {
         splitChunks: { chunks: 'all' },
@@ -56,7 +58,7 @@ module.exports = {
         analytics: './analytics.js',
     },
     output: {
-        filename: '[name].[contenthash].js',
+        filename: filename('js'),
         path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
@@ -75,8 +77,7 @@ module.exports = {
             },
         ]),
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css',
-            chunkFilename: '[id].css',
+            filename: filename('css'),
         }),
         new ESLintPlugin(),
         new BundleAnalyzerPlugin(),
