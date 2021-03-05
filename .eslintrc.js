@@ -17,6 +17,9 @@ module.exports = {
         'plugin:react/recommended',
         'plugin:json/recommended',
         'plugin:css-modules/recommended',
+        'plugin:vue/recommended',
+        'plugin:prettier/recommended',
+        '@vue/airbnb',
     ],
     ecmaFeatures: {
         modules: true,
@@ -37,22 +40,30 @@ module.exports = {
         'no-undef': 2,
         'no-plusplus': 0,
         camelcase: 0,
+        'max-len': [0],
+        'import/no-extraneous-dependencies': [
+            'error',
+            {
+                optionalDependencies: ['test/unit/index.js'],
+            },
+        ],
+        // 'import/no-extraneous-dependencies': 0,
+        'no-unused-expressions': ['error', { allowTernary: true }],
         'comma-dangle': 0,
         'no-unused-vars': 0,
         'no-useless-escape': 0,
         'guard-for-in': 1,
-        //    "no-console": 0,
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'import/default': 0,
         'import/extensions': 0,
         'import/no-duplicates': 0,
-        'import/no-extraneous-dependencies': 0,
+        'no-param-reassign': 0,
+        'quote-props': ['off', 'consistent'],
         'import/named': 0,
         'import/namespace': 0,
         'import/no-unresolved': 0,
         'import/no-named-as-default': 2,
-        'no-param-reassign': 0,
         'no-lone-blocks': 0,
         'react/jsx-boolean-value': 0,
         'react/jsx-filename-extension': 0,
@@ -79,9 +90,68 @@ module.exports = {
         ],
         indent: ['error', 4],
         'linebreak-style': ['error', 'unix'],
-        quotes: ['error', 'single'],
+        quotes: ['off', 'single'],
         semi: ['error', 'always'],
         'no-cond-assign': ['error', 'always'],
+        'vue/order-in-components': [
+            'error',
+            {
+                order: [
+                    'el',
+                    'name',
+                    'parent',
+                    'functional',
+                    ['delimiters', 'comments'],
+                    ['components', 'directives', 'filters'],
+                    'extends',
+                    'mixins',
+                    'inheritAttrs',
+                    'model',
+                    ['props', 'propsData'],
+                    'data',
+                    'computed',
+                    'watch',
+                    'LIFECYCLE_HOOKS',
+                    'methods',
+                    ['template', 'render'],
+                    'renderError',
+                ],
+            },
+        ],
+        'vue/html-closing-bracket-newline': [
+            'error',
+            {
+                singleline: 'never',
+                multiline: 'never',
+            },
+        ],
+        'vue/html-closing-bracket-spacing': [
+            'error',
+            {
+                startTag: 'never',
+                endTag: 'never',
+                selfClosingTag: 'always',
+            },
+        ],
+        'vue/script-indent': [
+            'error',
+            2,
+            {
+                baseIndent: 0,
+                switchCase: 1,
+                ignores: [],
+            },
+        ],
+        'vue/max-attributes-per-line': [
+            2,
+            {
+                singleline: 1,
+                multiline: {
+                    max: 1,
+                    allowFirstLine: false,
+                },
+            },
+        ],
     },
     ignorePatterns: ['node_modules/', 'dist/', 'public/'],
     plugins: ['react', 'html', 'css-modules', 'import', 'babel'],
@@ -162,132 +232,57 @@ module.exports = {
                 },
             },
         },
-        //    {
-        //      "files": [
-        //        "*.vue"
-        //      ],
-        //      "processor": "svelte3/svelte3",
-        //      "parser": "@typescript-eslint/parser",
-        //      // add the TypeScript parser
-        //      "plugins": [
-        //        "svelte3",
-        //        "@typescript-eslint"
-        //        // add the TypeScript plugin
-        //      ],
-        //      "parserOptions": {
-        //        // add these parser options
-        //        "tsconfigRootDir": "__dirname",
-        //        "project": "./tsconfig.json",
-        //        "sourceType": "module",
-        //        "extraFileExtensions": [
-        //          ".vue"
-        //        ],
-        //        "createDefaultProgram": true
-        //      },
-        //      "extends": [
-        //        // then, enable whichever type-aware rules you want to use
-        //        "plugin:vue/essential",
-        //        // this is a default sub-set of rules for your .vue files
-        //        "@vue/airbnb",
-        //        // plug airbnb rules but made for .vue files
-        //        "@vue/typescript"
-        //        // default typescript related rules
-        //      ],
-        //      "rules": {
-        //        "indent": [
-        //          "error",
-        //          4
-        //        ],
-        //        "linebreak-style": [
-        //          "error",
-        //          "unix"
-        //        ],
-        //        quotes: [
-        //          "error",
-        //          "single"
-        //        ],
-        //        semi: [
-        //          "error",
-        //          "always"
-        //        ],
-        //        'no-undef': 2,
-        //        'no-cond-assign': [
-        //          "error",
-        //          "always"
-        //        ],
-        //        "no-console": "off"
-        //      }
-        //    },
 
-        //    {
-        //      "files": [
-        //        "*.svelte"
-        //      ],
-        //      "processor": "svelte3/svelte3",
-        //      "parser": "@typescript-eslint/parser",
-        //      // add the TypeScript parser
-        //      "plugins": [
-        //        "svelte3",
-        //        "@typescript-eslint"
-        //        // add the TypeScript plugin
-        //      ],
-        //      "settings": {
-        //        "svelte3/typescript": "require('typescript')"
-        //        // pass the TypeScript package to the Sve lte plugin
-        //        // ...
-        //      },
-        //      "parserOptions": {
-        //        // add these parser options
-        //        "tsconfigRootDir": "__dirname",
-        //        "project": "./tsconfig.json",
-        //        "sourceType": "module",
-        //        "extraFileExtensions": [
-        //          ".svelte"
-        //        ],
-        //        "createDefaultProgram": true
-        //      },
-        //      "extends": [
-        //        // then, enable whichever type-aware rules you want to use
-        //        "eslint:recommended",
-        //        "airbnb-typescript",
-        //        "plugin:@typescript-eslint/recommended",
-        //        "plugin:@typescript-eslint/recommended-requiring-type-checking"
-        //      ],
-        //      "rules": {
-        //        "@typesctipt-eslint/indent": [
-        //          'error',
-        //          4
-        //        ],
-        //        "linebreak-style": [
-        //          'error',
-        //          'unix'
-        //        ],
-        //        quotes: [
-        //          'error',
-        //          'single'
-        //        ],
-        //        semi: [
-        //          'error',
-        //          'always'
-        //        ],
-        //        'no-undef': 1,
-        //        // override default options for rules from base configurations
-        //        // 'comma-dangle': ['error', 'always'],npm install --global @vue/cli
-        //        'no-cond-assign': [
-        //          'error',
-        //          'always'
-        //        ],
-        //        // disable rules from base configurations
-        //        'no-console': 'off'
-        //      }
-        //    }
+        {
+            files: ['*.svelte'],
+            processor: 'svelte3/svelte3',
+            parser: '@typescript-eslint/parser',
+            // add the TypeScript parser
+            plugins: [
+                'svelte3',
+                '@typescript-eslint',
+                // add the TypeScript plugin
+            ],
+            settings: {
+                'svelte3/typescript': "require('typescript')",
+                // pass the TypeScript package to the Sve lte plugin
+                // ...
+            },
+            parserOptions: {
+                // add these parser options
+                tsconfigRootDir: '__dirname',
+                project: './tsconfig.json',
+                sourceType: 'module',
+                extraFileExtensions: ['.svelte'],
+                createDefaultProgram: true,
+            },
+            extends: [
+                // then, enable whichever type-aware rules you want to use
+                'eslint:recommended',
+                'airbnb-typescript',
+                'plugin:@typescript-eslint/recommended',
+                'plugin:@typescript-eslint/recommended-requiring-type-checking',
+            ],
+            rules: {
+                '@typesctipt-eslint/indent': ['error', 4],
+                'linebreak-style': ['error', 'unix'],
+                quotes: ['error', 'single'],
+                semi: ['error', 'always'],
+                'no-undef': 1,
+                // override default options for rules from base configurations
+                // 'comma-dangle': ['error', 'always'],npm install --global @vue/cli
+                'no-cond-assign': ['error', 'always'],
+                // disable rules from base configurations
+                'no-console': 'off',
+            },
+        },
     ],
 };
 
 //  [
 //    // then, enable whichever type-aware rules you want to use
 //    //        "eslint:recommended",
-////    "airbnb-typescript"
+/// /    "airbnb-typescript"
 //    //    "plugin:@typescript-eslint/recommended",
 //    //    "plugin:@typescript-eslint/recommended-requiring-type-checking"
 //  ],

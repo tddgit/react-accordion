@@ -28,9 +28,7 @@ const todo = {
  * @param tax - Tax percentage
  * @returns {string}  - Total with a dollar sign
  */
-const calculateTax = (amount, tax) => {
-    return `$${amount} + ${tax * amount}`;
-};
+const calculateTax = (amount, tax) => `$${amount} + ${tax * amount}`;
 
 /**
  * A Student
