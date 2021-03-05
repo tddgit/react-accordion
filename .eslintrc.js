@@ -54,8 +54,10 @@ module.exports = {
         'no-unused-vars': 0,
         'no-useless-escape': 0,
         'guard-for-in': 1,
-        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-console': 0, // process.env.NODE_ENV ===
+        // 'production' ? 'error' : 'off',
+        'no-debugger': 0, // process.env.NODE_ENV ===
+        // 'production' ? 'error' : 'off',
         'import/default': 0,
         'import/extensions': 0,
         'import/no-duplicates': 0,

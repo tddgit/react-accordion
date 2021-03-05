@@ -31,6 +31,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/dist/main.2dd59767c4e4d1265246.js">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/nodemon.json">
           <value>
             <Attribute>

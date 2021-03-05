@@ -1,10 +1,39 @@
-// const NpmInstallPlugin = require('npm-install-webpack-plugin');
 const path = require('path');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
+const isDev = process.env.NODE_ENV === 'development';
+const devMode = process.env.NODE_ENV !== 'production';
+
+const optimization = () => {
+    const config = {
+        splitChunks: { chunks: 'all' },
+        minimize: true,
+    };
+    if (!isDev) {
+        config.minimizer = [
+            new TerserPlugin(
+                {
+                    test: /\.js(\?.*)?$/i,
+                },
+                new CssMinimizerPlugin(),
+            ),
+        ];
+    }
+    return config;
+};
+
+const plugins = [];
+if (!devMode) {
+    // enable in production only
+    plugins.push(new MiniCssExtractPlugin());
+}
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     watch: true,
@@ -18,7 +47,9 @@ module.exports = {
         compress: true,
         port: 9000,
         after() {},
+        hot: isDev,
     },
+    optimization: optimization(),
     mode: 'development',
     entry: {
         main: './index.js',
@@ -32,18 +63,29 @@ module.exports = {
         extensions: ['.js', '.json', '.jsx', '.png'],
         alias: {
             '@models': path.resolve(__dirname, 'src/models'),
+            '@': path.resolve(__dirname, 'src'),
         },
     },
-    optimization: {
-        splitChunks: { chunks: 'all' },
-    },
+
     plugins: [
-        // new NpmInstallPlugin(),
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, 'src/favicon.ico'),
+                to: path.resolve(__dirname, 'dist'),
+            },
+        ]),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css',
+            chunkFilename: '[id].css',
+        }),
         new ESLintPlugin(),
         new BundleAnalyzerPlugin(),
         new HtmlWebpackPlugin({
             title: 'Webpack Stas',
             template: './index.html',
+            minify: {
+                collapseWhitespace: isDev,
+            },
         }),
         new CleanWebpackPlugin(),
     ],
@@ -55,8 +97,22 @@ module.exports = {
                 include: [path.resolve(__dirname, 'src')],
             },
             {
-                test: /\.(css|xcss)$/,
-                use: ['style-loader', 'css-loader'],
+                test: /\.less$/,
+                use: [
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'less-loader',
+                ],
+                include: [path.resolve(__dirname, 'src')],
+            },
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ],
                 include: [path.resolve(__dirname, 'src')],
             },
             {
