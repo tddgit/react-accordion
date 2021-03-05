@@ -3,6 +3,10 @@
     <option name="RIGHT_MARGIN" value="100" />
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="true" />
     <option name="FORMATTER_TAGS_ENABLED" value="true" />
+    <CsvCodeStyleSettings>
+      <option name="SPACE_BEFORE_SEPARATOR" value="true" />
+      <option name="SPACE_AFTER_SEPARATOR" value="true" />
+    </CsvCodeStyleSettings>
     <DBN-PSQL>
       <case-options enabled="true">
         <option name="KEYWORD_CASE" value="lower" />

@@ -3,9 +3,6 @@
     "stylelint-config-standard",
     "stylelint-config-css-modules",
     "stylelint-config-sass-guidelines",
-    "stylelint-config-prettier",
-    "stylelint-no-unsupported-browser-features",
-    "stylelint-a11y",
     "stylelint-selector-bem-pattern",
     "stylelint-scss"
   ],
@@ -20,26 +17,6 @@
       "custom-properties",
       "declarations"
     ],
-    "prettier/prettier": [
-      true,
-      {
-        "printWidth": 80,
-        "tabWidth": 4,
-        "semi": true,
-        "singleQuote": true,
-        "quoteProps": "as-needed",
-        "bracketSpacing": true,
-        "jsxBracketSameLine": false,
-        "arrowParens": "always",
-        "tabs": false,
-        "tailingComma": "all",
-        "svelteSortOrder": "options-scripts-markup-styles",
-        "svelteStrictMode": true,
-        "svelteBracketNewLine": false,
-        "svelteAllowShorthand": false,
-        "svelteIndentScriptAndStyle": false
-      }
-    ],
     "plugin/selector-bem-pattern": {
       "componentName": "[A-Z]+",
       "componentSelectors": {
@@ -48,26 +25,10 @@
       },
       "utilitySelectors": "^\\.util-[a-z]+$"
     },
-    "plugin/no-unsupported-browser-features": [
-      true,
-      {
-        "browsers": [
-          "> 1%",
-          "Last 2 versions"
-        ],
-        "ignore": [
-          "rem"
-        ],
-        "ignorePartialSupport": true
-      }
-    ],
     "order/properties-order": [
       "width",
       "height"
-    ],
-    "a11y/media-prefers-reduced-motion": true,
-    "a11y/no-outline-none": true,
-    "a11y/selector-pseudo-class-focus": true
+    ]
   },
   "plugins": [
     "stylelint-order",

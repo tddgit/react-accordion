@@ -87,6 +87,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/src/styles/roboto.css">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/util.spec.js">
           <value>
             <Attribute>
@@ -133,6 +140,13 @@
           <value>
             <Attribute>
               <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/webpack.config.js">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>

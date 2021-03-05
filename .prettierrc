@@ -8,7 +8,7 @@
   "jsxBracketSameLine": false,
   "arrowParens": "always",
   "tabs": false,
-  "tailingComma": "all",
+  "trailingComma": "all",
   "svelteSortOrder": "options-scripts-markup-styles",
   "svelteStrictMode": true,
   "svelteBracketNewLine": false,
