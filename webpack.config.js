@@ -48,8 +48,8 @@ module.exports = {
         main: ['@babel/polyfill', './index'],
         analytics: './analytics',
         // vendor: './src/vendor',
-        polyfills: ['./angular-polyfills'],
-        anugular: ['./angular'],
+        polyfills: ['./polyfills'],
+        anugular: ['./main'],
     },
     context: path.resolve(__dirname, 'src'),
     resolve: {
@@ -132,7 +132,10 @@ module.exports = {
 
             {
                 test: /\.component\.html$/i,
-                loader: 'raw-loader',
+                // test: /\.html$/i,
+                type: 'asset/source',
+                exclude: /node_modules/,
+                include: [path.resolve(__dirname, 'src')],
             },
 
             // TODO: Error Разобраться почему вылетает  html-loader
@@ -206,18 +209,20 @@ module.exports = {
                     isDevelopment
                         ? 'style-loader'
                         : MiniCssExtractPlugin.loader,
+                    // 'to-string-loader',
                     'css-loader',
                     'sass-loader',
                 ],
             },
+
             {
                 test: /\.css$/i,
                 use: [
-                    isDevelopment
-                        ? 'style-loader'
-                        : MiniCssExtractPlugin.loader,
+                    // isDevelopment
+                    //     ? 'style-loader'
+                    //     : MiniCssExtractPlugin.loader,
                     // Creates `style` nodes from JS strings
-                    'style-loader',
+                    'to-string-loader',
                     // Translates CSS into CommonJS
                     'css-loader',
                 ],
@@ -226,7 +231,8 @@ module.exports = {
             {
                 test: /\.(ttf|woff|woff2|eot)$/,
                 include: [path.resolve(__dirname, 'src')],
-                use: ['file-loader'],
+                type: 'asset/resource',
+                // use: ['file-loader'],
             },
             {
                 test: /\.(xml)$/,
@@ -241,7 +247,8 @@ module.exports = {
             {
                 test: /\.(png|jpg|svg|gif|jpeg)$/,
                 include: [path.resolve(__dirname, 'src')],
-                use: ['file-loader'],
+                type: 'asset/resource',
+                // use: ['file-loader'],
             },
             {
                 test: /\.md$/,

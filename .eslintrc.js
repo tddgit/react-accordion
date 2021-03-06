@@ -220,6 +220,7 @@ module.exports = {
             },
             plugins: ['react', '@typescript-eslint'],
             rules: {
+                'import/prefer-default-export': 'off',
                 indent: 'off',
                 '@typescript-eslint/indent': ['off'],
                 '@typescript-eslint/dot-notation': ['off'],

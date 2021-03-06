@@ -59,6 +59,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/src/app/app.component.css">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/app/app.component.html">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/functions.js">
           <value>
             <Attribute>
