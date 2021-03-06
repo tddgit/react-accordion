@@ -9,7 +9,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
 const webpack = require('webpack');
+const paths = require('./paths');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isDevelopment = process.env.NODE_ENV !== 'production';
@@ -76,6 +78,7 @@ module.exports = {
 
     plugins: [
         new VueLoaderPlugin(),
+        new LiveReloadPlugin(),
         new CopyWebpackPlugin([
             {
                 from: path.resolve(__dirname, 'src/favicon.ico'),
@@ -88,8 +91,9 @@ module.exports = {
         new ESLintPlugin(),
         // new BundleAnalyzerPlugin(),
         new HtmlWebpackPlugin({
+            template: './index.ejs',
             title: 'Webpack Stas',
-            template: './index.html',
+            course: 'Webpack course with',
             minify: {
                 collapseWhitespace: isDev,
             },

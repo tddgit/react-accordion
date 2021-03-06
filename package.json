@@ -17,7 +17,7 @@
         "build-css": "tailwindcss build tailwindcss-tutorial/src/styles.css -o tailwindcss-tutorial/public/styles.css",
         "build": "NODE_ENV=production webpack --mode production",
         "dev": "cross-env NODE_ENV=development webpack --mode development --color --progress --hot",
-        "serve": "NODE_ENV=development webpack serve --liveReload --host 127.0.0.1 --port 9000 --color --progress --hot",
+        "serve": "NODE_ENV=development webpack serve --liveReload --host 127.0.0.1 --port 9000 --color --progress",
         "lint": "eslint --fix --color",
         "lint:fix": "eslint \"{src,apps,libs,test}/**/*.{js,jsx,ts,tsx,vue,svelte,html,we}\" --fix",
         "prepare": "husky install",
@@ -173,6 +173,7 @@
         "webpack-dev-middleware": "^3.7.3",
         "webpack-dev-server": "^3.11.2",
         "webpack-hot-middleware": "^2.25.0",
+        "webpack-livereload-plugin": "^3.0.0",
         "xml-loader": "^1.2.1"
     },
     "engines": {
