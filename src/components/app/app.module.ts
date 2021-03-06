@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoot } from './app.component';
+import AppRoot from './app.component';
 
 @NgModule({
     bootstrap: [AppRoot],

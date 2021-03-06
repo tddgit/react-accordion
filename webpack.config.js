@@ -47,10 +47,18 @@ module.exports = {
     entry: {
         main: ['@babel/polyfill', './index'],
         analytics: './analytics',
+        // vendor: './src/vendor',
         polyfills: ['./angular-polyfills'],
         anugular: ['./angular'],
     },
     context: path.resolve(__dirname, 'src'),
+    resolve: {
+        extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
+        alias: {
+            '@models': path.resolve(__dirname, 'src/models'),
+            '@': path.resolve(__dirname, 'src'),
+        },
+    },
     target: 'web',
     watch: true,
     watchOptions: {
@@ -62,6 +70,7 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
         historyApiFallback: true,
+        stats: 'minimal',
         port: 9000,
         after() {},
         hot: isDev,
@@ -71,13 +80,6 @@ module.exports = {
     output: {
         filename: filename('js'),
         path: path.resolve(__dirname, 'dist'),
-    },
-    resolve: {
-        extensions: ['.js', '.json', '.jsx', 'ts', 'tsx', '.png'],
-        alias: {
-            '@models': path.resolve(__dirname, 'src/models'),
-            '@': path.resolve(__dirname, 'src'),
-        },
     },
 
     plugins: [
@@ -100,7 +102,7 @@ module.exports = {
         ),
         // new BundleAnalyzerPlugin(),
         new HtmlWebpackPlugin({
-            template: './index.ejs',
+            template: './index.html',
             title: 'Webpack Stas',
             course: 'Webpack course with',
             minify: {
@@ -113,10 +115,26 @@ module.exports = {
     ],
     module: {
         rules: [
-            // {
-            //     test: /\.html$/i,
-            //     loader: 'html-loader',
-            // },
+            {
+                test: /\.pug$/,
+                oneOf: [
+                    // это применяется к `<template lang="pug">` в компонентах Vue
+                    {
+                        resourceQuery: /^\?vue/,
+                        use: ['pug-plain-loader'],
+                    },
+                    // это применяется к импортам pug внутри JavaScript
+                    {
+                        use: ['raw-loader', 'pug-plain-loader'],
+                    },
+                ],
+            },
+
+            {
+                test: /\.component\.html$/i,
+                loader: 'raw-loader',
+            },
+
             // TODO: Error Разобраться почему вылетает  html-loader
             {
                 test: /\.jsx$/,
@@ -160,7 +178,7 @@ module.exports = {
                 test: /\.(ts)$/,
                 exclude: /node_modules/,
                 include: [path.resolve(__dirname, 'src')],
-                use: 'ts-loader',
+                use: ['ts-loader', 'angular2-template-loader'],
             },
             {
                 test: /\.vue$/,

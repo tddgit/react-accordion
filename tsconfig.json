@@ -7,6 +7,9 @@
     "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
     "compilerOptions": {
         "experimentalDecorators": true,
+        "typeRoots": ["node_modules/@types"],
+        "suppressImplicitAnyIndexErrors": true,
+        "moduleResolution": "node",
         /* Visit https://aka.ms/tsconfig.json to read more about this file */
         ////        "noLib": true,
         //        "noResolve": true,
@@ -85,6 +88,6 @@
         /* Skip type checking of declaration files. */
         "forceConsistentCasingInFileNames": true,
         /* Disallow inconsistently-cased references to the same file. */
-        "lib": ["dom", "es5", "scripthost", "dom"]
+        "lib": ["dom", "es6", "scripthost", "dom"]
     }
 }

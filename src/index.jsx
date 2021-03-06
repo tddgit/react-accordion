@@ -5,7 +5,11 @@ import Vue from 'vue';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import Post from '@models/Post';
+import AppModule from './components/app/app.module';
+
 import App from './App.vue';
 
 import Webpacklogo from './assets/img.png';
@@ -17,6 +21,17 @@ import './styles/less.less';
 import './styles/scss.scss';
 
 import Counter from './components/counter';
+
+//
+// if (environment.production) {
+//     enableProdMode();
+// }
+
+platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch((err) => {
+        console.log(err);
+    });
 // import html from './index.html';
 
 // require('babel-plugin-runtime');
