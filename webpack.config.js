@@ -107,7 +107,8 @@ module.exports = {
             // {
             //     test: /\.html$/i,
             //     loader: 'html-loader',
-            // }, TODO: Error Разобраться почему вылетает  html-loader
+            // },
+            // TODO: Error Разобраться почему вылетает  html-loader
             {
                 test: /\.jsx$/,
                 exclude: /node_modules/,
@@ -155,11 +156,13 @@ module.exports = {
             {
                 test: /\.vue$/,
                 exclude: /node_modules/,
-                use: 'vue-loader',
                 include: [path.resolve(__dirname, 'src')],
+                use: 'vue-loader',
             },
             {
                 test: /\.less$/,
+                exclude: /node_modules/,
+                include: [path.resolve(__dirname, 'src')],
                 use: [
                     isDevelopment
                         ? 'style-loader'
@@ -167,10 +170,11 @@ module.exports = {
                     'css-loader',
                     'less-loader',
                 ],
-                include: [path.resolve(__dirname, 'src')],
             },
             {
                 test: /\.s[ac]ss$/i,
+                exclude: /node_modules/,
+                include: [path.resolve(__dirname, 'src')],
                 use: [
                     isDevelopment
                         ? 'style-loader'
@@ -178,11 +182,13 @@ module.exports = {
                     'css-loader',
                     'sass-loader',
                 ],
-                include: [path.resolve(__dirname, 'src')],
             },
             {
                 test: /\.css$/i,
                 use: [
+                    isDevelopment
+                        ? 'style-loader'
+                        : MiniCssExtractPlugin.loader,
                     // Creates `style` nodes from JS strings
                     'style-loader',
                     // Translates CSS into CommonJS
@@ -192,34 +198,23 @@ module.exports = {
 
             {
                 test: /\.(ttf|woff|woff2|eot)$/,
-                use: ['file-loader'],
                 include: [path.resolve(__dirname, 'src')],
+                use: ['file-loader'],
             },
             {
                 test: /\.(xml)$/,
-                use: ['xml-loader'],
                 include: [path.resolve(__dirname, 'src')],
+                use: ['xml-loader'],
             },
             {
                 test: /\.(csv)$/,
-                use: ['csv-loader'],
                 include: [path.resolve(__dirname, 'src')],
+                use: ['csv-loader'],
             },
             {
                 test: /\.(png|jpg|svg|gif|jpeg)$/,
-                use: ['file-loader'],
                 include: [path.resolve(__dirname, 'src')],
-            },
-            {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    // Creates `style` nodes from JS strings
-                    // 'style-loader',
-                    // // Translates CSS into CommonJS
-                    // 'css-loader',
-                    // Compiles Sass to CSS
-                    'sass-loader',
-                ],
+                use: ['file-loader'],
             },
             {
                 test: /\.md$/,
