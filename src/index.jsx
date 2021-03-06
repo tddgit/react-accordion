@@ -32,6 +32,11 @@ require('webpack-hot-middleware/client?reload=true');
 require('./styles/main.css');
 require('./images/link.jpg');
 require('./images/favicon.ico');
+require('./polyfills');
+require('./main');
+require('./vendor');
+require('./analytics');
+require('./data/post.md');
 
 const post = new Post('Webpack Post Title', Webpacklogo);
 

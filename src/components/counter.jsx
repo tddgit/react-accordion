@@ -1,4 +1,5 @@
 import React from 'react';
+import MarkdownData from '../data/post.md';
 
 export default class Counter extends React.Component {
     constructor(props) {
@@ -18,6 +19,7 @@ export default class Counter extends React.Component {
         return (
             <div onClick={this.climb}>
                 <h1>Counting: {this.state.count}</h1>
+                <div className={'content'}>{MarkdownData}</div>
             </div>
         );
     }

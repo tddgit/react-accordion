@@ -48,10 +48,10 @@ module.exports = {
     mode: isDevelopment ? 'development' : 'production',
     entry: {
         main: ['@babel/polyfill', './index'],
-        analytics: './analytics',
+        // analytics: './analytics',
         // vendor: './src/vendor',
-        polyfills: ['./polyfills'],
-        anugular: ['./main'],
+        // polyfills: ['./polyfills'],
+        // anugular: ['./main'],
     },
     context: path.resolve(__dirname, 'src'),
     resolve: {

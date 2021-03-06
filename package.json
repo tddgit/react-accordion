@@ -80,6 +80,7 @@
         "@vue/eslint-config-airbnb": "^5.3.0",
         "ajv": "^6.12.6",
         "angular2-template-loader": "^0.6.2",
+        "awesome-typescript-loader": "^3.0.3",
         "babel": "^6.23.0",
         "babel-core": "^6.26.3",
         "babel-eslint": "^10.1.0",

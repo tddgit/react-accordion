@@ -188,14 +188,14 @@ module.exports = {
                 node: true,
             },
             extends: [
-                'plugin:@angular-eslint/recommended',
+                // 'plugin:@angular-eslint/recommended',
                 'eslint:recommended',
                 'plugin:@typescript-eslint/recommended',
                 'airbnb-typescript',
                 'plugin:react/recommended',
                 'plugin:@typescript-eslint/eslint-recommended',
                 'plugin:@typescript-eslint/recommended-requiring-type-checking',
-                'plugin:@angular-eslint/template/process-inline-templates',
+                // 'plugin:@angular-eslint/template/process-inline-templates',
             ],
             globals: {
                 Atomics: 'readonly',

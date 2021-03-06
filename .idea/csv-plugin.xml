@@ -52,6 +52,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/src/analytics.ts">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/app.js">
           <value>
             <Attribute>
@@ -108,6 +115,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/src/main.ts">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/reverseString.js">
           <value>
             <Attribute>
@@ -123,6 +137,13 @@
           </value>
         </entry>
         <entry key="/src/util.spec.js">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/tsconfig.json">
           <value>
             <Attribute>
               <option name="separator" value="," />
