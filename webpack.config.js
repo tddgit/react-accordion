@@ -43,6 +43,13 @@ if (!isDevelopment) {
     plugins.push(new MiniCssExtractPlugin());
 }
 module.exports = {
+    mode: isDevelopment ? 'development' : 'production',
+    entry: {
+        main: ['@babel/polyfill', './index.jsx'],
+        analytics: './analytics.ts',
+        anugular: ['./angular.ts'],
+        polyfills: ['./angular-polyfills.ts'],
+    },
     context: path.resolve(__dirname, 'src'),
     target: 'web',
     watch: true,
@@ -54,22 +61,19 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
+        historyApiFallback: true,
         port: 9000,
         after() {},
         hot: isDev,
     },
     optimization: optimization(),
-    mode: isDevelopment ? 'development' : 'production',
-    entry: {
-        main: ['@babel/polyfill', './index.jsx'],
-        analytics: './analytics.ts',
-    },
+
     output: {
         filename: filename('js'),
         path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
-        extensions: ['.js', '.json', '.jsx', '.png'],
+        extensions: ['.js', '.json', '.jsx', 'ts', 'tsx', '.png'],
         alias: {
             '@models': path.resolve(__dirname, 'src/models'),
             '@': path.resolve(__dirname, 'src'),
@@ -89,6 +93,11 @@ module.exports = {
             filename: filename('css'),
         }),
         new ESLintPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.ContextReplacementPlugin(
+            /angular(\\|\/)core/,
+            path.join(__dirname, './src'),
+        ),
         // new BundleAnalyzerPlugin(),
         new HtmlWebpackPlugin({
             template: './index.ejs',
