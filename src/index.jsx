@@ -31,6 +31,7 @@ import Counter from './components/counter';
 require('webpack-hot-middleware/client?reload=true');
 require('./styles/main.css');
 require('./images/link.jpg');
+require('./images/favicon.ico');
 
 const post = new Post('Webpack Post Title', Webpacklogo);
 

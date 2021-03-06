@@ -16,6 +16,8 @@ const paths = require('./paths');
 const isDev = process.env.NODE_ENV === 'development';
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
+process.traceDeprecation = true;
+
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
 
 const optimization = () => {
@@ -60,7 +62,7 @@ module.exports = {
         },
     },
     target: 'web',
-    watch: true,
+    // watch: true,
     watchOptions: {
         aggregateTimeout: 200,
         poll: 1000,
@@ -84,13 +86,13 @@ module.exports = {
 
     plugins: [
         new VueLoaderPlugin(),
-        new LiveReloadPlugin(),
-        new CopyWebpackPlugin([
-            {
-                from: path.resolve(__dirname, 'src/favicon.ico'),
-                to: path.resolve(__dirname, 'dist'),
-            },
-        ]),
+        // new LiveReloadPlugin(),
+        // new CopyWebpackPlugin([
+        //     {
+        //         from: path.resolve(__dirname, 'src/favicon.ico'),
+        //         to: path.resolve(__dirname, 'dist'),
+        //     },
+        // ]),
         new MiniCssExtractPlugin({
             filename: filename('css'),
         }),
@@ -103,8 +105,9 @@ module.exports = {
         // new BundleAnalyzerPlugin(),
         new HtmlWebpackPlugin({
             template: './index.html',
-            title: 'Webpack Stas',
-            course: 'Webpack course with',
+            // title: 'Webpack Stas',
+            // course: 'Webpack course with',
+            inject: 'body',
             minify: {
                 collapseWhitespace: isDev,
             },
@@ -245,7 +248,7 @@ module.exports = {
                 use: ['csv-loader'],
             },
             {
-                test: /\.(png|jpg|svg|gif|jpeg)$/,
+                test: /\.(png|jpg|svg|gif|jpeg|ico)$/,
                 include: [path.resolve(__dirname, 'src')],
                 type: 'asset/resource',
                 // use: ['file-loader'],

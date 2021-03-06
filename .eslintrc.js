@@ -19,18 +19,10 @@ module.exports = {
         'plugin:css-modules/recommended',
         'plugin:prettier/recommended',
     ],
-    ecmaFeatures: {
-        modules: true,
-        arrowFunctions: true,
-        classes: true,
-        spread: true,
-    },
+
     //  "parser": "@typescript-eslint/parser",
     parser: 'babel-eslint',
     parserOptions: {
-        ecmaFeatures: {
-            jsx: true,
-        },
         ecmaVersion: 2020,
         sourceType: 'module',
     },
@@ -211,10 +203,7 @@ module.exports = {
             },
             parser: '@typescript-eslint/parser',
             parserOptions: {
-                ecmaFeatures: {
-                    jsx: true,
-                },
-                ecmaVersion: 2018,
+                ecmaVersion: 2020,
                 sourceType: 'module',
                 project: './tsconfig.json',
             },
