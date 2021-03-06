@@ -15,6 +15,8 @@ import './styles/styles.css';
 import csv from './assets/sample2.csv';
 import './styles/less.less';
 import './styles/scss.scss';
+
+import Counter from './components/counter';
 // import html from './index.html';
 
 // require('babel-plugin-runtime');
@@ -27,10 +29,7 @@ const post = new Post('Webpack Post Title', Webpacklogo);
 
 $('pre').addClass('code').html(post.toString());
 
-ReactDOM.render(
-    <h1>Hello, from React </h1>,
-    document.getElementById('react-root'),
-);
+ReactDOM.render(<Counter />, document.getElementById('react-root'));
 
 new Vue({
     el: '#appVue',

@@ -4,4 +4,3 @@
         <h1>Link's Journal</h1>
     </div>
 </template>
-;

@@ -8,9 +8,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const webpack = require('webpack');
 
 const isDev = process.env.NODE_ENV === 'development';
-const devMode = process.env.NODE_ENV !== 'production';
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
 
@@ -33,7 +35,7 @@ const optimization = () => {
 };
 
 const plugins = [];
-if (!devMode) {
+if (!isDevelopment) {
     // enable in production only
     plugins.push(new MiniCssExtractPlugin());
 }
@@ -53,7 +55,7 @@ module.exports = {
         hot: isDev,
     },
     optimization: optimization(),
-    mode: 'development',
+    mode: isDevelopment ? 'development' : 'production',
     entry: {
         main: ['@babel/polyfill', './index.jsx'],
         analytics: './analytics.ts',
@@ -91,6 +93,8 @@ module.exports = {
             },
         }),
         new CleanWebpackPlugin(),
+        isDevelopment && new webpack.HotModuleReplacementPlugin(),
+        isDevelopment && new ReactRefreshWebpackPlugin(),
     ],
     module: {
         rules: [
@@ -99,29 +103,61 @@ module.exports = {
             //     loader: 'html-loader',
             // }, TODO: Error Разобраться почему вылетает  html-loader
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: ['babel-loader'],
-            },
-            {
                 test: /\.jsx$/,
                 exclude: /node_modules/,
+                include: [path.resolve(__dirname, 'src')],
+                use: [
+                    {
+                        loader: require.resolve('babel-loader'),
+                        options: {
+                            plugins: [
+                                isDevelopment &&
+                                    require.resolve('react-refresh/babel'),
+                            ].filter(Boolean),
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.tsx$/,
+                exclude: /node_modules/,
+                include: [path.resolve(__dirname, 'src')],
+                use: [
+                    {
+                        loader: require.resolve('ts-loader'),
+                        options: {
+                            plugins: [
+                                isDevelopment &&
+                                    require.resolve('react-refresh/babel'),
+                            ].filter(Boolean),
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                include: [path.resolve(__dirname, 'src')],
                 use: ['babel-loader'],
             },
             {
-                test: /\.(ts|tsx)$/,
-                use: 'ts-loader',
+                test: /\.(ts)$/,
+                exclude: /node_modules/,
                 include: [path.resolve(__dirname, 'src')],
+                use: 'ts-loader',
             },
             {
                 test: /\.vue$/,
+                exclude: /node_modules/,
                 use: 'vue-loader',
                 include: [path.resolve(__dirname, 'src')],
             },
             {
                 test: /\.less$/,
                 use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    isDevelopment
+                        ? 'style-loader'
+                        : MiniCssExtractPlugin.loader,
                     'css-loader',
                     'less-loader',
                 ],
@@ -130,7 +166,9 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    isDevelopment
+                        ? 'style-loader'
+                        : MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader',
                 ],
