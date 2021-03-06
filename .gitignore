@@ -193,3 +193,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 /custom-template/
+_TEMP
+_GITHUB

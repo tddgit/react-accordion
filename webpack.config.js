@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 const isDev = process.env.NODE_ENV === 'development';
 const devMode = process.env.NODE_ENV !== 'production';
@@ -70,6 +71,7 @@ module.exports = {
     },
 
     plugins: [
+        new VueLoaderPlugin(),
         new CopyWebpackPlugin([
             {
                 from: path.resolve(__dirname, 'src/favicon.ico'),
@@ -92,6 +94,10 @@ module.exports = {
     ],
     module: {
         rules: [
+            // {
+            //     test: /\.html$/i,
+            //     loader: 'html-loader',
+            // }, TODO: Error Разобраться почему вылетает  html-loader
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -108,6 +114,11 @@ module.exports = {
                 include: [path.resolve(__dirname, 'src')],
             },
             {
+                test: /\.vue$/,
+                use: 'vue-loader',
+                include: [path.resolve(__dirname, 'src')],
+            },
+            {
                 test: /\.less$/,
                 use: [
                     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -120,7 +131,6 @@ module.exports = {
                 test: /\.s[ac]ss$/i,
                 use: [
                     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'style-loader',
                     'css-loader',
                     'sass-loader',
                 ],

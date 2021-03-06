@@ -17,9 +17,7 @@ module.exports = {
         'plugin:react/recommended',
         'plugin:json/recommended',
         'plugin:css-modules/recommended',
-        'plugin:vue/recommended',
         'plugin:prettier/recommended',
-        '@vue/airbnb',
     ],
     ecmaFeatures: {
         modules: true,
@@ -37,7 +35,7 @@ module.exports = {
         sourceType: 'module',
     },
     rules: {
-        indent: 'off',
+        'no-new': 'off',
         '@typescript-eslint/indent': ['off'],
         '@typescript-eslint/dot-notation': ['off'],
         '@typescript-eslint/ban-ts-comment': ['off'],
@@ -187,6 +185,9 @@ module.exports = {
         // indentation is one tab at the beginning of the line.
     },
     overrides: [
+        //= =============================TYPESCRIPT=========================
+        //
+        //= ================================================================
         {
             files: ['**/*.ts', '**/*.tsx'],
             env: {
@@ -238,6 +239,42 @@ module.exports = {
             },
         },
 
+        //= =============================VUE=========================
+        //
+        //= =========================================================
+
+        {
+            files: ['**/*.vue'],
+            env: {
+                browser: true,
+                es6: true,
+                node: true,
+            },
+            extends: [
+                'plugin:vue/recommended',
+                '@vue/airbnb',
+                'plugin:vue/vue3-recommended',
+            ],
+            plugins: [],
+            rules: {
+                'vue/html-indent': 'off',
+                'vue/max-attributes-per-line': 'off',
+                'vue/html-self-closing': 'off',
+                indent: 'off',
+                quotes: ['error', 'single'],
+                'comma-dangle': ['error', 'always-multiline'],
+                'no-undef': 2,
+                'no-unused-vars': 2,
+                'no-useless-escape': 0,
+                'no-console': 0,
+                'no-use-before-define': 0,
+                'no-param-reassign': 0,
+            },
+            settings: {},
+        },
+        //= =============================SVELTE=============================
+        //
+        //= ================================================================
         {
             files: ['*.svelte'],
             processor: 'svelte3/svelte3',

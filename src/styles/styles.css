@@ -8,7 +8,7 @@ body {
 .container {
     margin: 0 auto;
     margin: 0;
-    max-width: 1000px;
+    max-width: 200px;
     padding-bottom: 2rem;
     padding-top: 2rem;
 }
@@ -20,7 +20,7 @@ h1 {
 .logo {
     background-image: url('../assets/img.png');
     background-size: cover;
-    height: 800px;
+    height: 200px;
     margin: 0 auto;
     width: 800px;
 }

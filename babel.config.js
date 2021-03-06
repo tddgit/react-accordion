@@ -10,6 +10,8 @@ module.exports = {
         '@babel/plugin-proposal-class-properties',
         '@babel/plugin-proposal-private-methods',
         'transform-remove-debugger',
+        // 'babel-plugin-runtime',
+        // TODO: Error 'transform-runtime'
         ['transform-remove-console', { exclude: ['error', 'warn'] }],
     ],
 };
