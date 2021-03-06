@@ -45,10 +45,10 @@ if (!isDevelopment) {
 module.exports = {
     mode: isDevelopment ? 'development' : 'production',
     entry: {
-        main: ['@babel/polyfill', './index.jsx'],
-        analytics: './analytics.ts',
-        anugular: ['./angular.ts'],
-        polyfills: ['./angular-polyfills.ts'],
+        main: ['@babel/polyfill', './index'],
+        analytics: './analytics',
+        polyfills: ['./angular-polyfills'],
+        anugular: ['./angular'],
     },
     context: path.resolve(__dirname, 'src'),
     target: 'web',

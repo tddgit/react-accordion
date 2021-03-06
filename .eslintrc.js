@@ -196,11 +196,14 @@ module.exports = {
                 node: true,
             },
             extends: [
+                'plugin:@angular-eslint/recommended',
                 'eslint:recommended',
+                'plugin:@typescript-eslint/recommended',
                 'airbnb-typescript',
                 'plugin:react/recommended',
                 'plugin:@typescript-eslint/eslint-recommended',
-                'plugin:@typescript-eslint/recommended',
+                'plugin:@typescript-eslint/recommended-requiring-type-checking',
+                'plugin:@angular-eslint/template/process-inline-templates',
             ],
             globals: {
                 Atomics: 'readonly',
@@ -231,6 +234,22 @@ module.exports = {
                 'no-console': 0,
                 'no-use-before-define': 0,
                 'no-param-reassign': 0,
+                '@angular-eslint/component-selector': [
+                    'error',
+                    {
+                        type: 'element',
+                        prefix: 'app',
+                        style: 'kebab-case',
+                    },
+                ],
+                '@angular-eslint/directive-selector': [
+                    'error',
+                    {
+                        type: 'attribute',
+                        prefix: 'app',
+                        style: 'camelCase',
+                    },
+                ],
             },
             settings: {
                 react: {
@@ -238,10 +257,18 @@ module.exports = {
                 },
             },
         },
-
-        //= =============================VUE=========================
+        //= ==============================HTML=========================
         //
-        //= =========================================================
+        //= ==========================================================
+        {
+            files: ['*.html'],
+            extends: ['plugin:@angular-eslint/template/recommended'],
+            rules: {},
+        },
+
+        //= ==============================VUE=========================
+        //
+        //= ==========================================================
 
         {
             files: ['**/*.vue'],

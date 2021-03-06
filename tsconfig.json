@@ -6,6 +6,7 @@
     ],
     "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
     "compilerOptions": {
+        "experimentalDecorators": true,
         /* Visit https://aka.ms/tsconfig.json to read more about this file */
         ////        "noLib": true,
         //        "noResolve": true,
