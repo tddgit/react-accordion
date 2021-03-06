@@ -20,6 +20,7 @@ const optimization = () => {
     const config = {
         splitChunks: { chunks: 'all' },
         minimize: true,
+        runtimeChunk: 'single',
     };
     if (!isDev) {
         config.minimizer = [
@@ -41,6 +42,7 @@ if (!isDevelopment) {
 }
 module.exports = {
     context: path.resolve(__dirname, 'src'),
+    target: 'web',
     watch: true,
     watchOptions: {
         aggregateTimeout: 200,
