@@ -171,6 +171,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/src/styles/styles.css">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/util.spec.js">
           <value>
             <Attribute>

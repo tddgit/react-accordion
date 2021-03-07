@@ -24,22 +24,30 @@ const filename = (ext) => {
 
 const optimization = () => {
     const config = {
-        splitChunks: { chunks: 'all' },
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    name: 'vendors',
+                    chunks: 'all',
+                    test: /node_modules/,
+                    enforce: true,
+                },
+            },
+        },
         minimize: true,
         runtimeChunk: {
             name: 'runtime',
         },
-    };
-    if (!isDevelopment) {
-        config.minimizer = [
+        minimizer: [
             new TerserPlugin({
                 test: /\.js(\?.*)?$/i,
                 parallel: true,
             }),
             new CssMinimizerPlugin(),
-        ];
-    }
-    return config;
+        ],
+    };
+
+    return isDevelopment ? {} : config;
 };
 
 const plugins = [];
@@ -64,7 +72,7 @@ module.exports = {
             '@': path.resolve(__dirname, 'src'),
         },
     },
-    target: isDevelopment ? 'web' : 'browserlist',
+    target: isDevelopment ? ['web'] : ['browserslist'],
     // watch: true,
     watchOptions: {
         aggregateTimeout: 200,
@@ -83,11 +91,14 @@ module.exports = {
         hot: isDevelopment,
         watchContentBase: true,
     },
-    // optimization: optimization(),
+    optimization: optimization(),
 
     output: {
         filename: filename('js'),
         path: path.resolve(__dirname, 'dist'),
+        chunkLoading: false,
+        wasmLoading: false,
+
         // publicPath: 'dist/',
     },
     devtool: 'source-map',
@@ -118,10 +129,6 @@ module.exports = {
         new ReactRefreshWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].css',
-        }),
-        new webpack.SourceMapDevToolPlugin({
-            filename: '[name].js.map',
-            exclude: ['vendor.js'],
         }),
     ],
     module: {
@@ -325,3 +332,8 @@ module.exports = {
 // isDevelopment
 //     ? 'style-loader'
 //     : MiniCssExtractPlugin.loader,
+
+// new webpack.SourceMapDevToolPlugin({
+//     filename: '[name].js.map',
+//     exclude: ['vendor.js'],
+// }),
