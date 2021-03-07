@@ -143,6 +143,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/src/server/express.js">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/server/main.js">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/styles/main.css">
           <value>
             <Attribute>

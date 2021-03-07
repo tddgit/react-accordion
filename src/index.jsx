@@ -1,6 +1,6 @@
 import * as $ from 'jquery';
 
-import Vue from 'vue';
+import Vue, { createApp } from 'vue';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -44,12 +44,12 @@ $('pre').addClass('code').html(post.toString());
 
 ReactDOM.render(<Counter />, document.getElementById('react-root'));
 
-new Vue({
-    el: '#appVue',
-    render: (h) => h(App),
-});
+// new Vue({
+//     el: '#appVue',
+//     render: (h) => h(App),
+// });
 
-// createApp(App).mount('#appVue');
+createApp(App).mount('#appVue');
 
 console.log(post.toString());
 console.log('JSON', json);
