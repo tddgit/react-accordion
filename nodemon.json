@@ -2,11 +2,12 @@
     "restartable": "rs",
     "ignore": [".git", "node_modules/", "dist/", "coverage/"],
     "execMap": {
-        "ts, tsx": "node -r ts-node/register",
-        "js, jsx": "node"
+        "ts,tsx,": "webpack --watch --liveReload --host 127.0.0.1 --port 9000 --color --progress",
+        "js,jsx,html": "webpack --watch --liveReload --host 127.0.0.1 --port 9000 --color --progress"
     },
+    "watch": ["src", "dist"],
     "env": {
         "NODE_ENV": "development"
     },
-    "ext": "js,json,ts,tsx"
+    "ext": "js,json,ts,tsx,vue,html,jsx,css,scss"
 }

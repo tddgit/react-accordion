@@ -4,6 +4,8 @@ import Vue from 'vue';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App.vue';
+
 import Post from './models/Post';
 
 // import { enableProdMode } from '@angular/core';
@@ -11,8 +13,6 @@ import Post from './models/Post';
 import 'core-js/es6';
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
-
-import App from './App.vue';
 
 import Webpacklogo from './assets/img.png';
 import xml from './assets/books.xml';
@@ -49,8 +49,7 @@ new Vue({
     render: (h) => h(App),
 });
 
-// createApp(App).mount('#appVue'); TOTO: Уточнить есть
-// ли третья версия Vue  для установки
+// createApp(App).mount('#appVue');
 
 console.log(post.toString());
 console.log('JSON', json);

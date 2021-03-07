@@ -19,7 +19,10 @@ export default class Counter extends React.Component {
         return (
             <div onClick={this.climb}>
                 <h1>Counting: {this.state.count}</h1>
-                <div className={'content'}>{MarkdownData}</div>
+                <div
+                    className={'content'}
+                    dangerouslySetInnerHTML={{ __html: MarkdownData }}
+                ></div>
             </div>
         );
     }

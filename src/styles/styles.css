@@ -2,13 +2,14 @@
 @import './roboto.css';
 
 body {
+    background: rosybrown;
     font-family: 'Roboto', sans-serif;
 }
 
 .container {
     margin: 0 auto;
     margin: 0;
-    max-width: 200px;
+    max-width: 300px;
     padding-bottom: 2rem;
     padding-top: 2rem;
 }

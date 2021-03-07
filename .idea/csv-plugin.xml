@@ -31,6 +31,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/dist/index.html">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/dist/main.2dd59767c4e4d1265246.js">
           <value>
             <Attribute>
@@ -123,6 +130,20 @@
           </value>
         </entry>
         <entry key="/src/reverseString.js">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/server/dev-server.js">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/styles/main.css">
           <value>
             <Attribute>
               <option name="separator" value=";" />
