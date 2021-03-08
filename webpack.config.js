@@ -143,21 +143,29 @@ module.exports = {
                 include: [PATHS.src],
                 use: ['babel-loader'],
             },
+            // =================BASIC TYPESCRIPT OPTIONS===============
+            // {
+            //     test: /\.(ts|tsx)$/,
+            //     exclude: /node_modules/,
+            //     include: [PATHS.src],
+            //     use: 'ts-loader',
+            // },
+            // =======================================================
+            // =================VUE TYPESCRIPT OPTIONS===============
             {
-                test: /\.ts$/,
-                exclude: /node_modules/,
+                test: /\.(ts|tsx)$/,
                 include: [PATHS.src],
-                use: ['ts-loader', 'angular2-template-loader'],
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            appendTsSuffixTo: [/\.vue$/],
+                        },
+                    },
+                    'angular2-template-loader',
+                ],
             },
-            {
-                test: /\.tsx?$/,
-                loader: 'ts-loader',
-                include: [PATHS.src],
-                options: {
-                    appendTsSuffixTo: [/\.vue$/],
-                },
-                exclude: /node_modules/,
-            },
+            //= =======================================================
             {
                 test: /\.vue$/,
                 exclude: /node_modules/,
