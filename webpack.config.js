@@ -21,7 +21,7 @@ process.traceDeprecation = true;
 const filename = (ext) => {
     return isDevelopment ? `[name].${ext}` : `[name].[contenthash].${ext}`;
 };
-
+//
 const optimization = () => {
     const config = {
         // splitChunks: {
