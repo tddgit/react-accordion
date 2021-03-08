@@ -52,6 +52,6 @@ ReactDOM.render(<Counter />, document.getElementById('react-root'));
 createApp(App).mount('#appVue');
 
 console.log(post.toString());
-console.log('JSON', json);
-console.log('XML', xml);
-console.log('CSV', csv);
+console.log('JSON ', json);
+console.log('XML HTML ', xml);
+console.log('CSV ', csv);
