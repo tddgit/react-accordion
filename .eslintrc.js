@@ -39,7 +39,7 @@ module.exports = {
         'import/no-extraneous-dependencies': [
             'error',
             {
-                optionalDependencies: ['test/unit/index.jsx'],
+                optionalDependencies: ['test/unit/index.js'],
             },
         ],
         // 'import/no-extraneous-dependencies':   0,

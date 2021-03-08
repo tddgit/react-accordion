@@ -88,11 +88,11 @@ if (!isDevelopment) {
 
 module.exports = {
     mode: isDevelopment ? 'development' : 'production',
-    entry: ['webpack-hot-middleware/client?reload=true', './index.jsx'],
+    entry: ['webpack-hot-middleware/client?reload=true', PATHS.entry],
 
     context: PATHS.src,
     resolve: {
-        extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.json', '.jsx', '.ts', '.tsx, vue, svelte'],
 
         //= ===============ALIASES FOR FOLDERS===============================
         alias: {
@@ -276,7 +276,7 @@ module.exports = {
 // new NodemonPlugin({
 //     // If using more than one entry, you can specify
 //     // which output file will be restarted.
-//     script: './src/index.jsx',
+//     script: './src/index.js',
 //
 //     // What to watch.
 //     watch: path.resolve(__dirname, './src'),
