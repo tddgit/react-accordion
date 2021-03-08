@@ -79,6 +79,7 @@ if (!isDevelopment) {
             algorithm: 'gzip',
         }),
     );
+    plugins.push(new webpack.HotModuleReplacementPlugin());
 } else {
     plugins.push(new ReactRefreshWebpackPlugin());
     plugins.push(new webpack.HotModuleReplacementPlugin());
