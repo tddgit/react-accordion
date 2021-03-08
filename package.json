@@ -14,7 +14,7 @@
         "jest:watchAll": "jest --watchAll",
         "start": "webpack  --mode development --watch",
         "build-css": "tailwindcss build tailwindcss-tutorial/src/styles.css -o tailwindcss-tutorial/public/styles.css",
-        "build": "NODE_ENV=production webpack --mode production",
+        "build": "NODE_ENV=production webpack",
         "dev": "cross-env NODE_ENV=development webpack --watch --mode development --color --progress --hot",
         "nodemon": "nodemon --watch webpack.config.js --watch ./ --watch ./src ./src/server/main.js",
         "serve": "NODE_ENV=development  webpack serve --liveReload --host 127.0.0.1 --port 9000 --color --progress",
