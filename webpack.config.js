@@ -159,7 +159,13 @@ module.exports = {
                 test: /\.less$/,
                 exclude: /node_modules/,
                 include: [PATHS.src],
-                use: ['style-loader', 'css-loader', 'less-loader'],
+                use: [
+                    isDevelopment
+                        ? 'style-loader'
+                        : MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'less-loader',
+                ],
             },
             {
                 test: /\.s[ac]ss$/i,
