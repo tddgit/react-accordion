@@ -57,7 +57,7 @@ const plugins = [
         filename: filename('css'),
     }),
     new ESLintPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+
     new webpack.ContextReplacementPlugin(
         /angular(\\|\/)core/,
         path.join(__dirname, './i'),
@@ -82,6 +82,7 @@ if (!isDevelopment) {
     plugins.push(new BundleAnalyzerPlugin());
 } else {
     plugins.push(new ReactRefreshWebpackPlugin());
+    plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
 module.exports = {
@@ -339,3 +340,51 @@ module.exports = {
 // isDevelopment
 //     ? 'style-loader'
 //     : MiniCssExtractPlugin.loader,
+
+// const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
+// const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+//
+// // globals
+// const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+// const DEV_PORT = process.env.PORT || 9000;
+// const PACKAGE_NAME = getPackageName();
+// const plugins = [
+//     new ForkTsCheckerWebpackPlugin(
+//         IS_PRODUCTION
+//             ? {
+//                   async: false,
+//                   typescript: {
+//                       configFile: 'src/tsconfig.json',
+//                       useTypescriptIncrementalApi: true,
+//                       memoryLimit: 4096,
+//                   },
+//               }
+//             : {
+//                   typescript: {
+//                       configFile: 'src/tsconfig.json',
+//                   },
+//               },
+//     ),
+//
+//     // CSS extraction is only enabled in production (see scssLoaders below).
+//     new MiniCssExtractPlugin({ filename: '[name].css' }),
+//
+//     // pipe env variables to FE build, setting defaults where appropriate (null means optional)
+//     new webpack.EnvironmentPlugin({
+//         NODE_ENV: 'development',
+//         BLUEPRINT_NAMESPACE: null,
+//         REACT_APP_BLUEPRINT_NAMESPACE: null,
+//     }),
+// ];
+//
+// if (!IS_PRODUCTION) {
+//     plugins.push(
+//         new ReactRefreshWebpackPlugin(),
+//         new ForkTsCheckerNotifierWebpackPlugin({
+//             title: `${PACKAGE_NAME}: typescript`,
+//             excludeWarnings: false,
+//         }),
+//         new WebpackNotifierPlugin({ title: `${PACKAGE_NAME}: webpack` }),
+//         new webpack.HotModuleReplacementPlugin(),
+//     );
+// }
