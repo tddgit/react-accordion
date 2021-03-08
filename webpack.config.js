@@ -93,6 +93,8 @@ module.exports = {
     context: PATHS.src,
     resolve: {
         extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
+
+        //= ===============ALIASES FOR FOLDERS===============================
         alias: {
             '@components': path.resolve(__dirname, 'src/models'),
         },

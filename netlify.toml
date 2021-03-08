@@ -1,6 +1,6 @@
 [build]
 command = "npm build"
-publish = "build"
+publish = "dist"
 
 [context.production.environment]
 NODE_ENV = "production"
