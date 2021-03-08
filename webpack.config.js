@@ -24,16 +24,16 @@ const filename = (ext) => {
 
 const optimization = () => {
     const config = {
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    name: 'vendors',
-                    chunks: 'all',
-                    test: /node_modules/,
-                    enforce: true,
-                },
-            },
-        },
+        // splitChunks: {
+        //     cacheGroups: {
+        //         vendor: {
+        //             name: 'vendors',
+        //             chunks: 'all',
+        //             test: /node_modules/,
+        //             enforce: true,
+        //         },
+        //     },
+        // },
         minimize: true,
         // runtimeChunk: {
         //     name: 'runtime',
@@ -51,13 +51,37 @@ const optimization = () => {
     return isDevelopment ? {} : config;
 };
 
-const plugins = [];
+const plugins = [
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+        filename: filename('css'),
+    }),
+    new ESLintPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ContextReplacementPlugin(
+        /angular(\\|\/)core/,
+        path.join(__dirname, './i'),
+    ),
+    new HtmlWebpackPlugin({
+        template: './index.html',
+        title: '',
+        inject: 'body',
+        minify: {
+            collapseWhitespace: isDevelopment,
+        },
+    }),
+    new CleanWebpackPlugin(),
+];
+
 if (!isDevelopment) {
     plugins.push(
         new CompressionPlugin({
             algorithm: 'gzip',
         }),
     );
+    plugins.push(new BundleAnalyzerPlugin());
+} else {
+    plugins.push(new ReactRefreshWebpackPlugin());
 }
 
 module.exports = {
@@ -99,35 +123,10 @@ module.exports = {
         wasmLoading: false,
         assetModuleFilename: 'images/[hash][ext][query]',
 
-        publicPath: PATHS.build,
+        // publicPath: 'dist',
     },
     devtool: isDevelopment ? 'eval' : 'source-map',
-    plugins: [
-        new VueLoaderPlugin(),
-        new MiniCssExtractPlugin({
-            filename: filename('css'),
-        }),
-        new ESLintPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.ContextReplacementPlugin(
-            /angular(\\|\/)core/,
-            path.join(__dirname, './i'),
-        ),
-        // new BundleAnalyzerPlugin(),
-        new HtmlWebpackPlugin({
-            template: './index.html',
-            title: 'Webpack Stas',
-            inject: 'body',
-            minify: {
-                collapseWhitespace: isDevelopment,
-            },
-        }),
-        new CleanWebpackPlugin(),
-        new ReactRefreshWebpackPlugin(),
-        // new MiniCssExtractPlugin({
-        //     filename: '[name].css',
-        // }),
-    ],
+    plugins,
     module: {
         rules: [
             {
@@ -166,9 +165,7 @@ module.exports = {
                 exclude: /node_modules/,
                 include: [PATHS.src],
                 use: [
-                    isDevelopment
-                        ? 'style-loader'
-                        : MiniCssExtractPlugin.loader,
+                    'style-loader',
                     {
                         loader: 'css-loader',
                         options: { sourceMap: true },
@@ -184,6 +181,7 @@ module.exports = {
                 test: /\.css$/i,
                 use: [
                     'to-string-loader',
+
                     isDevelopment
                         ? 'style-loader'
                         : MiniCssExtractPlugin.loader,
@@ -337,3 +335,7 @@ module.exports = {
 //     filename: '[name].js.map',
 //     exclude: ['vendor.js'],
 // }),
+
+// isDevelopment
+//     ? 'style-loader'
+//     : MiniCssExtractPlugin.loader,

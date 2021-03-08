@@ -207,7 +207,7 @@ module.exports = {
                 sourceType: 'module',
                 project: './tsconfig.json',
             },
-            plugins: ['react', '@typescript-eslint'],
+            plugins: ['react', '@typescript-eslint', '@angular-eslint'],
             rules: {
                 'import/prefer-default-export': 'off',
                 indent: 'off',
