@@ -108,6 +108,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/src/index.jsx">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/js/index.js">
           <value>
             <Attribute>

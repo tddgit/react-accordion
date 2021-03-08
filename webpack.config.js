@@ -12,7 +12,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-const paths = require('./paths');
+const PATHS = require('./paths');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -35,9 +35,10 @@ const optimization = () => {
             },
         },
         minimize: true,
-        runtimeChunk: {
-            name: 'runtime',
-        },
+        // runtimeChunk: {
+        //     name: 'runtime',
+        // },
+        // TODO: What it is runtimeChunk?
         minimizer: [
             new TerserPlugin({
                 test: /\.js(\?.*)?$/i,
@@ -52,7 +53,6 @@ const optimization = () => {
 
 const plugins = [];
 if (!isDevelopment) {
-    // enable in production only
     plugins.push(
         new CompressionPlugin({
             algorithm: 'gzip',
@@ -64,12 +64,11 @@ module.exports = {
     mode: isDevelopment ? 'development' : 'production',
     entry: ['webpack-hot-middleware/client?reload=true', './index.jsx'],
 
-    context: path.resolve(__dirname, 'src'),
+    context: PATHS.src,
     resolve: {
         extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
         alias: {
             '@components': path.resolve(__dirname, 'src/models'),
-            '@': path.resolve(__dirname, 'src'),
         },
     },
     target: isDevelopment ? ['web'] : ['browserslist'],
@@ -81,7 +80,7 @@ module.exports = {
     },
 
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: PATHS.build,
         compress: true,
         overlay: true,
         historyApiFallback: true,
@@ -95,20 +94,19 @@ module.exports = {
 
     output: {
         filename: filename('js'),
-        path: path.resolve(__dirname, 'dist'),
+        path: PATHS.build,
         chunkLoading: false,
         wasmLoading: false,
+        assetModuleFilename: 'images/[hash][ext][query]',
 
-        // publicPath: 'dist/',
+        publicPath: PATHS.build,
     },
-    devtool: 'source-map',
+    devtool: isDevelopment ? 'eval' : 'source-map',
     plugins: [
         new VueLoaderPlugin(),
-
         new MiniCssExtractPlugin({
             filename: filename('css'),
         }),
-
         new ESLintPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(
@@ -125,11 +123,10 @@ module.exports = {
             },
         }),
         new CleanWebpackPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin(),
-        new MiniCssExtractPlugin({
-            filename: '[name].css',
-        }),
+        // new MiniCssExtractPlugin({
+        //     filename: '[name].css',
+        // }),
     ],
     module: {
         rules: [
@@ -138,38 +135,40 @@ module.exports = {
                 // test: /\.html$/i,
                 type: 'asset/source',
                 exclude: /node_modules/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [PATHS.src],
             },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [PATHS.src],
                 use: ['babel-loader'],
             },
             {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [PATHS.src],
                 use: ['ts-loader', 'angular2-template-loader'],
             },
             {
                 test: /\.vue$/,
                 exclude: /node_modules/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [PATHS.src],
                 use: 'vue-loader',
             },
             {
                 test: /\.less$/,
                 exclude: /node_modules/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [PATHS.src],
                 use: ['style-loader', 'css-loader', 'less-loader'],
             },
             {
                 test: /\.s[ac]ss$/i,
                 exclude: /node_modules/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [PATHS.src],
                 use: [
-                    'style-loader',
+                    isDevelopment
+                        ? 'style-loader'
+                        : MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: { sourceMap: true },
@@ -194,25 +193,30 @@ module.exports = {
             },
             {
                 test: /\.(ttf|woff|woff2|eot)$/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [PATHS.src],
                 type: 'asset/resource',
             },
             {
                 test: /\.(xml)$/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [PATHS.src],
                 use: ['xml-loader'],
             },
             {
                 test: /\.(csv)$/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [PATHS.src],
                 use: ['csv-loader'],
             },
             {
                 test: /\.(png|jpg|svg|gif|jpeg|ico)$/,
-                include: [path.resolve(__dirname, 'src')],
-                type: 'asset/resource',
-                // use: ['file-loader'],
+                include: [PATHS.src],
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 30 * 1024,
+                    },
+                },
             },
+
             {
                 test: /\.md$/,
                 use: [
@@ -276,7 +280,7 @@ module.exports = {
 //     // test: /\.html$/i,
 //     type: 'asset/source',
 //     exclude: /node_modules/,
-//     include: [path.resolve(__dirname, 'src')],
+//     include: [PATHS.src],
 // },
 
 // new LiveReloadPlugin(),
@@ -312,13 +316,13 @@ module.exports = {
 // {
 //     test: /\.js$/,
 //         exclude: /node_modules/,
-//     include: [path.resolve(__dirname, 'src')],
+//     include: [PATHS.src],
 //     use: ['babel-loader'],
 // },
 // {
 //     test: /\.(ts)$/,
 //         exclude: /node_modules/,
-//     include: [path.resolve(__dirname, 'src')],
+//     include: [PATHS.src],
 //     use: ['ts-loader', 'angular2-template-loader'],
 // },
 
@@ -328,10 +332,6 @@ module.exports = {
 //         to: path.resolve(__dirname, 'dist'),
 //     },
 // ]),
-
-// isDevelopment
-//     ? 'style-loader'
-//     : MiniCssExtractPlugin.loader,
 
 // new webpack.SourceMapDevToolPlugin({
 //     filename: '[name].js.map',
