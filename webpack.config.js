@@ -144,10 +144,19 @@ module.exports = {
                 use: ['babel-loader'],
             },
             {
-                test: /\.(ts|tsx)$/,
+                test: /\.ts$/,
                 exclude: /node_modules/,
                 include: [PATHS.src],
                 use: ['ts-loader', 'angular2-template-loader'],
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                include: [PATHS.src],
+                options: {
+                    appendTsSuffixTo: [/\.vue$/],
+                },
+                exclude: /node_modules/,
             },
             {
                 test: /\.vue$/,
