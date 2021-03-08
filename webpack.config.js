@@ -79,10 +79,10 @@ if (!isDevelopment) {
             algorithm: 'gzip',
         }),
     );
-    plugins.push(new BundleAnalyzerPlugin());
 } else {
     plugins.push(new ReactRefreshWebpackPlugin());
     plugins.push(new webpack.HotModuleReplacementPlugin());
+    plugins.push(new BundleAnalyzerPlugin());
 }
 
 module.exports = {
