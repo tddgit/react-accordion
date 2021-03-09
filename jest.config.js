@@ -6,32 +6,48 @@
 module.exports = {
     // All imported modules in your tests should be mocked automatically
     // automock: false,
+    // A list of paths to directories that Jest should use to search for files in
 
+    roots: ['<rootDir>/src'],
+    snapshotSerializers: ['enzyme-to-json/serializer'],
+    setupFilesAfterEnv: ['<rootDir>/src/setupEnzyme.ts'],
+
+    testMatch: [
+        'test/?(*.)+(spec|test|Spec).[tj]s?(x)',
+        '**/__tests__/**/*.[jt]s?(x)',
+        '**/?(*.)+(spec|test|Spec).[tj]s?(x)',
+    ],
+
+    // The test environment that will be used for testing
+    testEnvironment: 'node',
+
+    // Automatically clear mock calls and instances between every test
+    clearMocks: true,
+    skipEnvCheck: true,
+    // The directory where Jest should output its coverage files
+    coverageDirectory: 'coverage',
+    // An array of regexp pattern strings used to skip coverage collection
+    coveragePathIgnorePatterns: ['/cypress/'],
+    // Indicates which provider should be used to instrument code for coverage
+    coverageProvider: 'v8',
+
+    // A map from regular expressions to paths to transformers
+    // transform: undefined,
+
+    transform: {
+        '^.+\\.(ts|tsx)$': 'ts-jest',
+    },
     // Stop running tests after `n` failures
     // bail: 0,
 
     // The directory where Jest should store its cached dependency information
     // cacheDirectory: "/private/var/folders/16/scgm13yx5fg4jktfln3tvxfm0000gn/T/jest_dx",
 
-    // Automatically clear mock calls and instances between every test
-    clearMocks: true,
-
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     // collectCoverageFrom: undefined,
-
-    // The directory where Jest should output its coverage files
-    coverageDirectory: 'coverage',
-
-    // An array of regexp pattern strings used to skip coverage collection
-    // coveragePathIgnorePatterns: [
-    //   "/node_modules/"
-    // ],
-
-    // Indicates which provider should be used to instrument code for coverage
-    coverageProvider: 'v8',
 
     // A list of reporter names that Jest uses when writing coverage reports
     // coverageReporters: [
@@ -116,11 +132,6 @@ module.exports = {
     // The root directory that Jest should scan for tests and modules within
     // rootDir: undefined,
 
-    // A list of paths to directories that Jest should use to search for files in
-    // roots: [
-    //   "<rootDir>"
-    // ],
-
     // Allows you to use a custom runner instead of Jest's default test runner
     // runner: "jest-runner",
 
@@ -136,9 +147,6 @@ module.exports = {
     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
     // snapshotSerializers: [],
 
-    // The test environment that will be used for testing
-    testEnvironment: 'node',
-
     // Options that will be passed to the testEnvironment
     // testEnvironmentOptions: {},
 
@@ -146,11 +154,6 @@ module.exports = {
     // testLocationInResults: false,
 
     // The glob patterns Jest uses to detect test files
-    testMatch: [
-        'test/?(*.)+(spec|test|Spec).[tj]s?(x)',
-        '**/__tests__/**/*.[jt]s?(x)',
-        '**/?(*.)+(spec|test|Spec).[tj]s?(x)',
-    ],
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
     // testPathIgnorePatterns: [
@@ -171,9 +174,6 @@ module.exports = {
 
     // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
     // timers: "real",
-
-    // A map from regular expressions to paths to transformers
-    // transform: undefined,
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [

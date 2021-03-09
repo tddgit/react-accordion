@@ -3,7 +3,10 @@ const plugins = [
     '@babel/plugin-proposal-private-methods',
     '@babel/plugin-proposal-private-property-in-object',
     '@babel/plugin-proposal-throw-expressions',
-    ['@babel/plugin-proposal-pipeline-operator', { proposal: 'minimal' }],
+    [
+        '@babel/plugin-proposal-pipeline-operator',
+        { proposal: 'minimal' },
+    ],
     '@babel/plugin-proposal-partial-application',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-proposal-numeric-separator',
@@ -23,9 +26,15 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 
 if (!isDevelopment) {
     plugins.push('transform-remove-debugger');
-    plugins.push(['transform-remove-console', { exclude: ['error', 'warn'] }]);
+    plugins.push([
+        'transform-remove-console',
+        { exclude: ['error', 'warn'] },
+    ]);
 } else {
-    plugins.push('react-refresh/babel');
+    plugins.push([
+        'react-refresh/babel',
+        { skipEnvCheck: true },
+    ]);
 }
 
 module.exports = {

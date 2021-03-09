@@ -1,8 +1,16 @@
 module.exports = function (wallaby) {
     return {
-        files: ['src/**/*.js', 'src/**/*.ts', 'src/**/*.coffee'],
+        files: [
+            'src/**/*.js',
+            'src/**/*.ts',
+            'src/**/*.coffee',
+        ],
 
-        tests: ['test/**/*Spec.js', 'test/**/*Spec.ts', 'test/**/*Spec.coffee'],
+        tests: [
+            'test/**/*Spec.js',
+            'test/**/*Spec.ts',
+            'test/**/*Spec.coffee',
+        ],
         env: {
             type: 'node',
             // kind: 'chrome',

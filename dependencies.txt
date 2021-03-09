@@ -1,0 +1,65 @@
+//==================GENERAL============================
+        "@babel/runtime": "^7.13.9",
+        "cypress": "^6.6.0",
+        "normalize.css": "^8.0.1",
+
+
+//===================REACT================================
+//        "@testing-library/jest-dom": "^5.11.4",
+//        "@testing-library/react": "^11.1.0",
+//        "@testing-library/user-event": "^12.1.10",
+//        "@types/jest": "^26.0.15",
+//        "@types/node": "^12.0.0",
+//        "@types/react": "^17.0.0",
+//        "@types/react-dom": "^17.0.0",
+//        "@types/react-redux": "^7.1.16",
+//        "@types/redux-thunk": "^2.1.0",
+//        "axios": "^0.21.1",
+//        "react": "^17.0.1",
+//        "react-dom": "^17.0.1",
+//        "react-icons": "^4.2.0",
+//        "react-redux": "^7.2.2",
+//        "react-scripts": "4.0.3",
+//        "redux": "^4.0.5",
+//        "redux-thunk": "^2.3.0",
+//        "typescript": "^4.1.2",
+//        "web-vitals": "^1.0.1"
+//        "react-hooks": "^1.0.1",
+
+
+//======================ANGULAR=============================
+//        "@angular-devkit/build-angular": "~0.1102.0",
+//        "@angular/cli": "~11.2.0",
+//        "@angular/compiler-cli": "~11.2.0",
+//        "@types/jasmine": "~3.6.0",
+//        "@types/node": "^12.11.1",
+//        "@angular/forms": "^11.2.4",
+//        "@angular/platform-browser": "^11.2.4",
+//        "@angular/platform-browser-dynamic": "^11.2
+//        "codelyzer": "^6.0.0",
+//        "jasmine-core": "~3.6.0",
+//        "jasmine-spec-reporter": "~5.0.0",
+//        "karma": "~6.1.0",
+//        "karma-chrome-launcher": "~3.1.0",
+//        "karma-coverage": "~2.0.3",
+//        "karma-jasmine": "~4.0.0",
+//        "karma-jasmine-html-reporter": "^1.5.0",
+//        "protractor": "~7.0.0",
+//        "ts-node": "~8.3.0",
+//        "tslint": "~6.1.0",
+//        "typescript": "~4.1.2"
+//        "zone.js": "^0.11.4",
+//                "rxjs": "^6.6.6"
+//        "reflect-metadata": "^0.1.13"
+//==================VUE========================================
+//        "axios": "^0.21.1",
+//        "core-js": "^3.6.5",
+//        "vue": "^3.0.0"
+//        "@vue/cli-plugin-babel": "~4.5.0",
+//        "@vue/cli-plugin-eslint": "~4.5.0",
+//        "@vue/cli-plugin-unit-jest": "^4.5.11",
+//        "@vue/cli-service": "~4.5.0",
+//        "@vue/compiler-sfc": "^3.0.0",
+//        "@vue/eslint-config-airbnb": "^5.0.2",
+//        "@vue/test-utils": "^2.0.0-0",
+//        "vue-jest": "^5.0.0-0"

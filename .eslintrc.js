@@ -7,7 +7,10 @@ module.exports = {
         es6: true,
         jest: true,
         mocha: true,
+        'cypress/globals': true,
+        'react-native/react-native': true,
     },
+    processor: 'disable/disable',
     extends: [
         'airbnb-base',
         'eslint:recommended',
@@ -18,6 +21,41 @@ module.exports = {
         'plugin:json/recommended',
         'plugin:css-modules/recommended',
         'plugin:prettier/recommended',
+        'plugin:cypress/recommended',
+        'plugin:jest-formatting/recommended',
+        // 'plugin:lodash/recommended',
+        'plugin:lodash/v3',
+        'plugin:security/recommended',
+        'plugin:jest-dom/recommended',
+        'plugin:markdown/recommended',
+        'plugin:jsx-a11y/recommended',
+        'plugin:node/recommended',
+        'plugin:react-redux/recommended',
+        'plugin:you-dont-need-lodash-underscore/compatible',
+    ],
+    plugins: [
+        'react',
+        'import',
+        'html',
+        'css-modules',
+        'import',
+        'babel',
+        'cypress',
+        'jest-formatting',
+        'optimize-regex',
+        'security',
+        'lodash',
+        'no-constructor-bind',
+        'sql',
+        'jest-dom',
+        'disable',
+        'jsx-a11y',
+        'jsdoc',
+        'react-native',
+        'graphql',
+        'react-redux',
+        'eslint-plugin-no-cyrillic-string',
+        // "optimize-regex/all" // without the blacklist
     ],
 
     //  "parser": "@typescript-eslint/parser",
@@ -25,8 +63,31 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 2020,
         sourceType: 'module',
+        ecmaFeatures: {
+            jsx: true,
+        },
     },
     rules: {
+        'no-cyrillic-string/no-cyrillic-string': 'error',
+        'jest-dom/prefer-checked': 'error',
+        'jest-dom/prefer-enabled-disabled': 'error',
+        'jest-dom/prefer-required': 'error',
+        'jest-dom/prefer-to-have-attribute': 'error',
+        'import/no-unresolved': 'error',
+        'no-constructor-bind/no-constructor-bind': 'error',
+        'no-constructor-bind/no-constructor-state': 'error',
+        // 'import/no-unresolved': 0,
+        'optimize-regex/optimize-regex': [
+            'warn',
+            {
+                blacklist: ['charClassClassrangesMerge'],
+            },
+        ],
+        'cypress/no-assigning-return-values': 'error',
+        'cypress/no-unnecessary-waiting': 'error',
+        'cypress/assertion-before-screenshot': 'warn',
+        'cypress/no-force': 'warn',
+        'cypress/no-async-tests': 'error',
         'no-new': 'off',
         '@typescript-eslint/indent': ['off'],
         '@typescript-eslint/dot-notation': ['off'],
@@ -34,16 +95,21 @@ module.exports = {
 
         'no-undef': 2,
         'no-plusplus': 0,
-        camelcase: 0,
+        camelcase: 1,
         'max-len': [0],
         'import/no-extraneous-dependencies': [
             'error',
             {
-                optionalDependencies: ['test/unit/index.js'],
+                optionalDependencies: [
+                    'test/unit/index.js',
+                ],
             },
         ],
         // 'import/no-extraneous-dependencies':   0,
-        'no-unused-expressions': ['error', { allowTernary: true }],
+        'no-unused-expressions': [
+            'error',
+            { allowTernary: true },
+        ],
         'comma-dangle': 0,
         'object-curly-newline': 0,
         'no-unused-vars': 0,
@@ -60,7 +126,7 @@ module.exports = {
         'quote-props': ['off', 'consistent'],
         'import/named': 0,
         'import/namespace': 0,
-        'import/no-unresolved': 0,
+
         'import/no-named-as-default': 2,
         'no-lone-blocks': 0,
         'react/jsx-boolean-value': 0,
@@ -150,15 +216,95 @@ module.exports = {
                 },
             },
         ],
+        'sql/format': [
+            2,
+            {
+                ignoreExpressions: false,
+                ignoreInline: true,
+                ignoreTagless: true,
+            },
+        ],
+        'sql/no-unsafe-query': [
+            2,
+            {
+                allowLiteral: false,
+            },
+        ],
+        'jsdoc/check-access': 1, // Recommended
+        'jsdoc/check-alignment': 1, // Recommended
+        'jsdoc/check-examples': 1,
+        'jsdoc/check-indentation': 1,
+        'jsdoc/check-line-alignment': 1,
+        'jsdoc/check-param-names': 1, // Recommended
+        'jsdoc/check-property-names': 1, // Recommended
+        'jsdoc/check-syntax': 1,
+        'jsdoc/check-tag-names': 1, // Recommended
+        'jsdoc/check-types': 1, // Recommended
+        'jsdoc/check-values': 1, // Recommended
+        'jsdoc/empty-tags': 1, // Recommended
+        'jsdoc/implements-on-classes': 1, // Recommended
+        'jsdoc/match-description': 1,
+        'jsdoc/newline-after-description': 1, // Recommended
+        'jsdoc/no-bad-blocks': 1,
+        'jsdoc/no-defaults': 1,
+        'jsdoc/no-types': 1,
+        'jsdoc/no-undefined-types': 1, // Recommended
+        'jsdoc/require-description': 1,
+        'jsdoc/require-description-complete-sentence': 1,
+        'jsdoc/require-example': 1,
+        'jsdoc/require-file-overview': 1,
+        'jsdoc/require-hyphen-before-param-description': 1,
+        'jsdoc/require-jsdoc': 1, // Recommended
+        'jsdoc/require-param': 1, // Recommended
+        'jsdoc/require-param-description': 1, // Recommended
+        'jsdoc/require-param-name': 1, // Recommended
+        'jsdoc/require-param-type': 1, // Recommended
+        'jsdoc/require-property': 1, // Recommended
+        'jsdoc/require-property-description': 1, // Recommended
+        'jsdoc/require-property-name': 1, // Recommended
+        'jsdoc/require-property-type': 1, // Recommended
+        'jsdoc/require-returns': 1, // Recommended
+        'jsdoc/require-returns-check': 1, // Recommended
+        'jsdoc/require-returns-description': 1, // Recommended
+        'jsdoc/require-returns-type': 1, // Recommended
+        'jsdoc/require-throws': 1,
+        'jsdoc/require-yields': 1, // Recommended
+        'jsdoc/require-yields-check': 1, // Recommended
+        'jsdoc/valid-types': 1, // Recommended
+        'node/exports-style': ['error', 'module.exports'],
+        'node/file-extension-in-import': [
+            'error',
+            'always',
+        ],
+        'node/prefer-global/buffer': ['error', 'always'],
+        'node/prefer-global/console': ['error', 'always'],
+        'node/prefer-global/process': ['error', 'always'],
+        'node/prefer-global/url-search-params': [
+            'error',
+            'always',
+        ],
+        'node/prefer-global/url': ['error', 'always'],
+        'node/prefer-promises/dns': 'error',
+        'node/prefer-promises/fs': 'error',
+        'node/no-unpublished-require': 0,
+        'react-native/no-unused-styles': 2,
+        'react-native/split-platform-components': 2,
+        'react-native/no-inline-styles': 2,
+        'react-native/no-color-literals': 2,
+        'react-native/no-raw-text': 2,
+        'react-native/no-single-element-style-arrays': 2,
     },
     ignorePatterns: ['node_modules/', 'dist/', 'public/'],
-    plugins: ['react', 'html', 'css-modules', 'import', 'babel'],
+
     globals: {
         Atomics: 'readonly',
         SharedArrayBuffer: 'readonly',
     },
     settings: {
         'import/parser': 'babel-eslint',
+        'import/parsers': {
+            '@typescript-eslint/parser': ['.ts', '.tsx'],
+        },
         'import/resolve': {
             moduleDirectory: ['node_modules', 'src'],
         },
@@ -168,15 +314,38 @@ module.exports = {
         'html/html-extensions': ['.html', '.we'],
         'html/xml-extensions': ['.html'],
         'html/report-bad-indent': 'error',
-        'html/javascript-mime-types': '/^text\\/(javascript|jsx)$/',
+        'html/javascript-mime-types':
+            '/^text\\/(javascript|jsx)$/',
         //    "html/indent": "0",
-        //    // code should start at the beginning of the line (no initial indentation).
+        //    // code should start at the beginning of the line
+        //    (no initial indentation).
         //    "html/indent": "+4",
         //    // indentation is the <script> indentation plus two spaces.
         'html/indent': 'tab',
+        'react-native/style-sheet-object-names': [
+            'EStyleSheet',
+            'OtherStyleSheet',
+            'PStyleSheet',
+        ],
         // indentation is one tab at the beginning of the line.
     },
     overrides: [
+        {
+            files: ['tests/**/*.test.js'],
+            settings: {
+                'disable/plugins': ['react'],
+            },
+        },
+        {
+            // Enable the Markdown processor for all .md files.
+            files: ['**/*.md'],
+            processor: 'markdown/markdown',
+            rules: {
+                // 2. Disable other rules.
+                'no-console': 'off',
+                'import/no-unresolved': 'off',
+            },
+        },
         //= =============================TYPESCRIPT=========================
         //
         //= ================================================================
@@ -195,6 +364,7 @@ module.exports = {
                 'plugin:react/recommended',
                 'plugin:@typescript-eslint/eslint-recommended',
                 'plugin:@typescript-eslint/recommended-requiring-type-checking',
+                'plugin:@typescript-eslint/recommended',
                 // 'plugin:@angular-eslint/template/process-inline-templates',
             ],
             globals: {
@@ -207,16 +377,26 @@ module.exports = {
                 sourceType: 'module',
                 project: './tsconfig.json',
             },
-            plugins: ['react', '@typescript-eslint', '@angular-eslint'],
+            plugins: [
+                'react',
+                '@typescript-eslint',
+                'eslint-plugin-tsdoc',
+            ],
             rules: {
                 'import/prefer-default-export': 'off',
+                'tsdoc/syntax': 'warn',
                 indent: 'off',
                 '@typescript-eslint/indent': ['off'],
                 '@typescript-eslint/dot-notation': ['off'],
-                '@typescript-eslint/ban-ts-comment': ['off'],
+                '@typescript-eslint/ban-ts-comment': [
+                    'off',
+                ],
                 'linebreak-style': ['error', 'unix'],
                 quotes: ['error', 'single'],
-                'comma-dangle': ['error', 'always-multiline'],
+                'comma-dangle': [
+                    'error',
+                    'always-multiline',
+                ],
                 '@typescript-eslint/no-explicit-any': 0,
                 'no-undef': 2,
                 'no-unused-vars': 2,
@@ -224,22 +404,6 @@ module.exports = {
                 'no-console': 0,
                 'no-use-before-define': 0,
                 'no-param-reassign': 0,
-                '@angular-eslint/component-selector': [
-                    'error',
-                    {
-                        type: 'element',
-                        prefix: 'app',
-                        style: 'kebab-case',
-                    },
-                ],
-                '@angular-eslint/directive-selector': [
-                    'error',
-                    {
-                        type: 'attribute',
-                        prefix: 'app',
-                        style: 'camelCase',
-                    },
-                ],
             },
             settings: {
                 react: {
@@ -252,7 +416,7 @@ module.exports = {
         //= ==========================================================
         {
             files: ['*.html'],
-            extends: ['plugin:@angular-eslint/template/recommended'],
+
             rules: {},
         },
 
@@ -279,7 +443,10 @@ module.exports = {
                 'vue/html-self-closing': 'off',
                 indent: 'off',
                 quotes: ['error', 'single'],
-                'comma-dangle': ['error', 'always-multiline'],
+                'comma-dangle': [
+                    'error',
+                    'always-multiline',
+                ],
                 'no-undef': 2,
                 'no-unused-vars': 2,
                 'no-useless-escape': 0,
@@ -303,7 +470,8 @@ module.exports = {
                 // add the TypeScript plugin
             ],
             settings: {
-                'svelte3/typescript': "require('typescript')",
+                'svelte3/typescript':
+                    "require('typescript')",
                 // pass the TypeScript package to the Sve lte plugin
                 // ...
             },
@@ -329,7 +497,8 @@ module.exports = {
                 semi: ['error', 'always'],
                 'no-undef': 1,
                 // override default options for rules from base configurations
-                // 'comma-dangle': ['error', 'always'],npm install --global @vue/cli
+                // 'comma-dangle': ['error', 'always'],npm install
+                // --global @vue/cli
                 'no-cond-assign': ['error', 'always'],
                 // disable rules from base configurations
                 'no-console': 'off',

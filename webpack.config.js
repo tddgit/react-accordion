@@ -1,8 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const {
+    BundleAnalyzerPlugin,
+} = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {
+    CleanWebpackPlugin,
+} = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -19,9 +23,11 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 process.traceDeprecation = true;
 
 const filename = (ext) => {
-    return isDevelopment ? `[name].${ext}` : `[name].[contenthash].${ext}`;
+    return isDevelopment
+        ? `[name].${ext}`
+        : `[name].[contenthash].${ext}`;
 };
-//
+
 const optimization = () => {
     const config = {
         // splitChunks: {
@@ -80,6 +86,7 @@ if (!isDevelopment) {
         }),
     );
     plugins.push(new webpack.HotModuleReplacementPlugin());
+    plugins.push(new BundleAnalyzerPlugin());
 } else {
     plugins.push(new ReactRefreshWebpackPlugin());
     plugins.push(new webpack.HotModuleReplacementPlugin());
@@ -88,15 +95,29 @@ if (!isDevelopment) {
 
 module.exports = {
     mode: isDevelopment ? 'development' : 'production',
-    entry: ['webpack-hot-middleware/client?reload=true', PATHS.entry],
+    entry: [
+        'webpack-hot-middleware/client?reload=true',
+        PATHS.entry,
+    ],
 
     context: PATHS.src,
     resolve: {
-        extensions: ['.js', '.json', '.jsx', '.ts', '.tsx, vue, svelte'],
+        extensions: [
+            '.js',
+            '.json',
+            '.jsx',
+            '.ts',
+            '.tsx',
+            'vue',
+            'svelte',
+        ],
 
         //= ===============ALIASES FOR FOLDERS===============================
         alias: {
-            '@components': path.resolve(__dirname, 'src/models'),
+            '@components': path.resolve(
+                __dirname,
+                'src/models',
+            ),
         },
     },
     target: isDevelopment ? ['web'] : ['browserslist'],
@@ -111,7 +132,9 @@ module.exports = {
         contentBase: PATHS.build,
         compress: true,
         overlay: true,
-        historyApiFallback: true,
+        historyApiFallback: {
+            index: 'index.html',
+        },
         stats: 'minimal',
         port: 9000,
         after() {},
@@ -265,7 +288,10 @@ module.exports = {
                     },
 
                     {
-                        use: ['raw-loader', 'pug-plain-loader'],
+                        use: [
+                            'raw-loader',
+                            'pug-plain-loader',
+                        ],
                     },
                 ],
             },

@@ -7,7 +7,5 @@
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/_GITHUB/jsdoc-examples" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/_GITHUB/webpack-course" vcs="Git" />
   </component>
 </project>
