@@ -2,7 +2,7 @@
  * @file Accordion component for the App.
  */
 
-import React { useState } from 'react';
+import React, { useState } from 'react';
 
 // eslint-disable-next-line react/prop-types
 const Accordion = ({ items }) => {
