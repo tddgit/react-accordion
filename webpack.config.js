@@ -1,12 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const {
-    BundleAnalyzerPlugin,
-} = require('webpack-bundle-analyzer');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {
-    CleanWebpackPlugin,
-} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -15,6 +11,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+require('dotenv').config();
 
 const PATHS = require('./paths');
 
@@ -23,9 +21,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 process.traceDeprecation = true;
 
 const filename = (ext) => {
-    return isDevelopment
-        ? `[name].${ext}`
-        : `[name].[contenthash].${ext}`;
+    return isDevelopment ? `[name].${ext}` : `[name].[contenthash].${ext}`;
 };
 
 const optimization = () => {
@@ -59,6 +55,16 @@ const optimization = () => {
 
 const plugins = [
     new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
+    new webpack.EnvironmentPlugin({}),
+    new Dotenv({
+        path: './.env', // Path to .env file (this is the default)
+        safe: false, // load .env.example (defaults to "false" which does not
+        // use dotenv-safe)
+    }),
+
     new MiniCssExtractPlugin({
         filename: filename('css'),
     }),
@@ -69,7 +75,7 @@ const plugins = [
         path.join(__dirname, './i'),
     ),
     new HtmlWebpackPlugin({
-        template: './index.html',
+        template: './public/index.html',
         title: '',
         inject: 'body',
         minify: {
@@ -87,41 +93,28 @@ if (!isDevelopment) {
     );
     plugins.push(new webpack.HotModuleReplacementPlugin());
     plugins.push(new BundleAnalyzerPlugin());
+    plugins.push(new CopyWebpackPlugin([{ from: './public', to: './' }]));
 } else {
     plugins.push(new ReactRefreshWebpackPlugin());
     plugins.push(new webpack.HotModuleReplacementPlugin());
-    plugins.push(new BundleAnalyzerPlugin());
+    // plugins.push(new BundleAnalyzerPlugin());
 }
 
 module.exports = {
     mode: isDevelopment ? 'development' : 'production',
-    entry: [
-        'webpack-hot-middleware/client?reload=true',
-        PATHS.entry,
-    ],
+    entry: ['webpack-hot-middleware/client?reload=true', PATHS.entry],
 
     context: PATHS.src,
     resolve: {
-        extensions: [
-            '.js',
-            '.json',
-            '.jsx',
-            '.ts',
-            '.tsx',
-            'vue',
-            'svelte',
-        ],
+        extensions: ['.js', '.json', '.jsx', '.ts', '.tsx', 'vue', 'svelte'],
 
         //= ===============ALIASES FOR FOLDERS===============================
         alias: {
-            '@components': path.resolve(
-                __dirname,
-                'src/models',
-            ),
+            '@': path.resolve(__dirname, 'src/components'),
         },
     },
-    target: isDevelopment ? ['web'] : ['browserslist'],
-    // watch: true,
+    target: isDevelopment ? 'web' : 'browserslist',
+    watch: true,
     watchOptions: {
         aggregateTimeout: 200,
         poll: 1000,
@@ -129,7 +122,6 @@ module.exports = {
     },
 
     devServer: {
-        contentBase: PATHS.build,
         compress: true,
         overlay: true,
         historyApiFallback: {
@@ -137,9 +129,12 @@ module.exports = {
         },
         stats: 'minimal',
         port: 9000,
-        after() {},
-        hot: isDevelopment,
+        // after() {},
+        hot: true,
         watchContentBase: true,
+        contentBase: PATHS.src,
+        // publicPath: 'http://localhost:9000',
+        inline: true,
     },
     optimization: optimization(),
 
@@ -149,10 +144,11 @@ module.exports = {
         chunkLoading: false,
         wasmLoading: false,
         assetModuleFilename: 'images/[hash][ext][query]',
-
-        // publicPath: 'dist',
+        clean: true,
+        // publicPath: '/',
     },
-    devtool: isDevelopment ? 'eval' : 'source-map',
+    // devtool: isDevelopment ? 'eval' : 'source-map',
+    devtool: 'source-map',
     plugins,
     module: {
         rules: [
@@ -288,10 +284,7 @@ module.exports = {
                     },
 
                     {
-                        use: [
-                            'raw-loader',
-                            'pug-plain-loader',
-                        ],
+                        use: ['raw-loader', 'pug-plain-loader'],
                     },
                 ],
             },

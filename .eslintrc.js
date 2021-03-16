@@ -8,7 +8,7 @@ module.exports = {
         jest: true,
         mocha: true,
         'cypress/globals': true,
-        'react-native/react-native': true,
+        // 'react-native/react-native': true,
     },
     processor: 'disable/disable',
     extends: [
@@ -23,7 +23,7 @@ module.exports = {
         'plugin:prettier/recommended',
         'plugin:cypress/recommended',
         'plugin:jest-formatting/recommended',
-        // 'plugin:lodash/recommended',
+        'plugin:lodash/recommended',
         'plugin:lodash/v3',
         'plugin:security/recommended',
         'plugin:jest-dom/recommended',
@@ -51,7 +51,7 @@ module.exports = {
         'disable',
         'jsx-a11y',
         'jsdoc',
-        'react-native',
+        // 'react-native',
         'graphql',
         'react-redux',
         'eslint-plugin-no-cyrillic-string',
@@ -68,6 +68,8 @@ module.exports = {
         },
     },
     rules: {
+        'prettier/prettier': 'off',
+        'prefer-destructuring': 'off',
         'no-cyrillic-string/no-cyrillic-string': 'error',
         'jest-dom/prefer-checked': 'error',
         'jest-dom/prefer-enabled-disabled': 'error',
@@ -287,12 +289,17 @@ module.exports = {
         'node/prefer-promises/dns': 'error',
         'node/prefer-promises/fs': 'error',
         'node/no-unpublished-require': 0,
-        'react-native/no-unused-styles': 2,
-        'react-native/split-platform-components': 2,
-        'react-native/no-inline-styles': 2,
-        'react-native/no-color-literals': 2,
-        'react-native/no-raw-text': 2,
-        'react-native/no-single-element-style-arrays': 2,
+        'node/no-unsupported-features/es-syntax': 0,
+        'node/file-extension-in-import': 0,
+        'node/no-extraneous-require': 0,
+        'import/prefer-default-export': 0,
+
+        // 'react-native/no-unused-styles': 2,
+        // 'react-native/split-platform-components': 2,
+        // 'react-native/no-inline-styles': 2,
+        // 'react-native/no-color-literals': 2,
+        // 'react-native/no-raw-text': 2,
+        // 'react-native/no-single-element-style-arrays': 2,
     },
     ignorePatterns: ['node_modules/', 'dist/', 'public/'],
 
@@ -301,6 +308,9 @@ module.exports = {
         SharedArrayBuffer: 'readonly',
     },
     settings: {
+        'html/indent': '+4', // indentation is the <script> indentation plus
+
+        'html/report-bad-indent': 'off',
         'import/parser': 'babel-eslint',
         'import/parsers': {
             '@typescript-eslint/parser': ['.ts', '.tsx'],
@@ -313,7 +323,7 @@ module.exports = {
         },
         'html/html-extensions': ['.html', '.we'],
         'html/xml-extensions': ['.html'],
-        'html/report-bad-indent': 'error',
+
         'html/javascript-mime-types':
             '/^text\\/(javascript|jsx)$/',
         //    "html/indent": "0",
@@ -321,12 +331,12 @@ module.exports = {
         //    (no initial indentation).
         //    "html/indent": "+4",
         //    // indentation is the <script> indentation plus two spaces.
-        'html/indent': 'tab',
-        'react-native/style-sheet-object-names': [
-            'EStyleSheet',
-            'OtherStyleSheet',
-            'PStyleSheet',
-        ],
+
+        // 'react-native/style-sheet-object-names': [
+        //     'EStyleSheet',
+        //     'OtherStyleSheet',
+        //     'PStyleSheet',
+        // ],
         // indentation is one tab at the beginning of the line.
     },
     overrides: [

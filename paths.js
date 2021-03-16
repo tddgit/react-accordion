@@ -21,4 +21,6 @@ module.exports = {
 
     // static path
     static: path.resolve(__dirname, './src/static'),
+
+    public: path.resolve(__dirname, './src/public'),
 };

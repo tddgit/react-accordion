@@ -1,5 +1,7 @@
 {
-    "include": ["./src/**/*"],
+    "include": [
+      "./_TEMP/src/**/*"
+    ],
     "exclude": [
         "node_modules/*",
         "__sapper__/*",
