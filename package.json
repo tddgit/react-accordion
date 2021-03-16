@@ -51,7 +51,7 @@
         }
     },
     "lint-staged": {
-        "**/*.{js,jsx,ts,tsx,vue,svelte}": [
+        "{src,apps,lib,test}/**/*.{js,jsx,ts,tsx,vue,svelte,html,we}": [
             "npm run test",
             "npm run prettier",
             "npm run lint"
