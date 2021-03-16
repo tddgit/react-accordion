@@ -18,7 +18,7 @@
         "dev": "cross-env NODE_ENV=development webpack --watch --mode development --color --progress --hot",
         "nodemon": "nodemon --watch webpack.config.js --watch ./ --watch _TEMP/src ../gatsby-project/src/server/main.js",
         "serve": "NODE_ENV=development  webpack serve --liveReload --host 127.0.0.1 --port 9000 --color --progress",
-        "lint": "eslint",
+        "lint": "eslint \"{src,apps,lib,test}/**/*.{js,jsx,ts,tsx,vue,svelte,html,we}\"",
         "lint:fix": "eslint \"{src,apps,libs,test}/**/*.{js,jsx,ts,tsx,vue,svelte,html,we}\" --fix",
         "prepare": "husky install",
         "husky:pre-commit": "npx husky add .husky/pre-commit \"lint-staged\"",
@@ -51,7 +51,7 @@
         }
     },
     "lint-staged": {
-        "**/src/*.{js,jsx,ts,tsx,vue,svelte}": [
+        "**/*.{js,jsx,ts,tsx,vue,svelte}": [
             "npm run test",
             "npm run prettier",
             "npm run lint"
