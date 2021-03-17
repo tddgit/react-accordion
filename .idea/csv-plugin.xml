@@ -31,6 +31,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/babel.config.js">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/dist/bundle.js">
           <value>
             <Attribute>
@@ -109,6 +116,13 @@
           </value>
         </entry>
         <entry key="/src/components/Search.js">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/components/Translate.js">
           <value>
             <Attribute>
               <option name="separator" value="," />

@@ -54,7 +54,7 @@ const optimization = () => {
 };
 
 const plugins = [
-    new VueLoaderPlugin(),
+    // new VueLoaderPlugin(),
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
@@ -97,6 +97,11 @@ if (!isDevelopment) {
 } else {
     plugins.push(new ReactRefreshWebpackPlugin());
     plugins.push(new webpack.HotModuleReplacementPlugin());
+    plugins.push(
+        new webpack.SourceMapDevToolPlugin({
+            filename: '[file].map',
+        }),
+    );
     // plugins.push(new BundleAnalyzerPlugin());
 }
 
@@ -144,11 +149,11 @@ module.exports = {
         chunkLoading: false,
         wasmLoading: false,
         assetModuleFilename: 'images/[hash][ext][query]',
-        clean: true,
+        sourceMapFilename: '[name].js.map',
         // publicPath: '/',
     },
     // devtool: isDevelopment ? 'eval' : 'source-map',
-    devtool: 'source-map',
+    devtool: isDevelopment ? 'eval-cheap-source-map' : 'source-map',
     plugins,
     module: {
         rules: [
@@ -160,10 +165,18 @@ module.exports = {
                 include: [PATHS.src],
             },
             {
-                test: /\.(js|jsx)$/,
+                test: /\.js$/,
                 exclude: /node_modules/,
+                enforce: 'pre',
                 include: [PATHS.src],
-                use: ['babel-loader'],
+                use: ['source-map-loader', 'babel-loader'],
+            },
+            {
+                test: /\.jsx$/,
+                exclude: /node_modules/,
+                enforce: 'pre',
+                include: [PATHS.src],
+                use: ['source-map-loader', 'babel-loader'],
             },
             // =================BASIC TYPESCRIPT OPTIONS===============
             // {
@@ -188,12 +201,20 @@ module.exports = {
                 ],
             },
             //= =======================================================
-            {
-                test: /\.vue$/,
-                exclude: /node_modules/,
-                include: [PATHS.src],
-                use: 'vue-loader',
-            },
+            // {
+            //     test: /\.vue$/,
+            //     exclude: /node_modules/,
+            //     include: [PATHS.src],
+            //     // use: 'vue-loader',
+            //     loader: 'vue-loader',
+            //     options: {
+            //         loaders: {
+            //             scss: 'vue-style-loader!css-loader!sass-loader', // <style lang="scss">
+            //             sass:
+            //                 'vue-style-loader!css-loader!sass-loader?indentedSyntax', // <style lang="sass">
+            //         },
+            //     },
+            // },
             {
                 test: /\.less$/,
                 exclude: /node_modules/,
@@ -211,6 +232,7 @@ module.exports = {
                 exclude: /node_modules/,
                 include: [PATHS.src],
                 use: [
+                    // 'vue-style-loader',
                     'style-loader',
                     {
                         loader: 'css-loader',
@@ -226,6 +248,7 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: [
+                    // 'vue-style-loader',
                     'to-string-loader',
 
                     isDevelopment
