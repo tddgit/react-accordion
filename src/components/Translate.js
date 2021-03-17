@@ -4,6 +4,7 @@
 
 import React, { useState } from 'react';
 import Dropdown from './Dropdown';
+import Convert from './Convert';
 
 const options = [
     {
@@ -19,8 +20,6 @@ const options = [
         value: 'hi',
     },
 ];
-
-// POST https://translation.googleapis.com/language/translate/v2
 
 const Translate = () => {
     const [language, setLanguage] = useState(options[0]);
@@ -46,6 +45,9 @@ const Translate = () => {
                 onSelectedChange={setLanguage}
                 label={'Select a language'}
             />
+            <hr />
+            <h3 className={'ui header'}>Output</h3>
+            <Convert language={language} text={text} />
         </div>
     );
 };

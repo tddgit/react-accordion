@@ -11,8 +11,8 @@ const Dropdown = ({ options, selected, onSelectedChange, label }) => {
 
     useEffect(() => {
         const onBodyClick = (event) => {
-            console.log('BODY CLICK!!!');
-            console.log('event.target', event.target);
+            // console.log('BODY CLICK!!!');
+            // console.log('event.target', event.target);
             if (ref.current.contains(event.target)) {
                 return;
             }
@@ -43,7 +43,7 @@ const Dropdown = ({ options, selected, onSelectedChange, label }) => {
                 key={option.value}
                 className={'item'}
                 onClick={() => {
-                    console.log('ITEMS CLICKED!!!');
+                    // console.log('ITEMS CLICKED!!!');
                     onSelectedChange(option);
                 }}
                 onKeyPress={() => onSelectedChange(option)}
@@ -55,7 +55,7 @@ const Dropdown = ({ options, selected, onSelectedChange, label }) => {
         );
     });
 
-    console.log('ref.current', ref.current);
+    // console.log('ref.current', ref.current);
 
     return (
         <div ref={ref} className={'ui form'}>
@@ -65,7 +65,7 @@ const Dropdown = ({ options, selected, onSelectedChange, label }) => {
                 </label>
                 <div
                     onClick={() => {
-                        console.log('DROPDOWN CLICKED!!');
+                        // console.log('DROPDOWN CLICKED!!');
                         setOpen(!open);
                     }}
                     onKeyPress={() => setOpen(!open)}

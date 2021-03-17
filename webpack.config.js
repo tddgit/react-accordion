@@ -129,11 +129,12 @@ module.exports = {
     devServer: {
         compress: true,
         overlay: true,
-        historyApiFallback: {
-            index: 'index.html',
-        },
+        // historyApiFallback: {
+        //     index: 'index.html',
+        // },
+        historyApiFallback: true,
         stats: 'minimal',
-        port: 9000,
+        port: 3000,
         // after() {},
         hot: true,
         watchContentBase: true,
