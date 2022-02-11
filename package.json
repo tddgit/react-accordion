@@ -350,7 +350,7 @@
         "joi": "^17.4.0",
         "jsonfile": "^6.1.0",
         "jsonwebtoken": "^8.5.1",
-        "karma": "~6.1.0",
+        "karma": "~6.3.14",
         "karma-chrome-launcher": "~3.1.0",
         "karma-coverage": "~2.0.3",
         "karma-jasmine": "~4.0.0",
